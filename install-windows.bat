@@ -2,10 +2,16 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
-REM SBIR Skill 自動安裝程式 (Final v5)
+REM 切換到腳本所在目錄（這樣不管從哪裡執行都能正常運作）
+cd /d "%~dp0"
+
+REM SBIR Skill 自動安裝程式 (Final v6)
 echo ==========================================
 echo    SBIR Skill 自動安裝程式
 echo ==========================================
+echo.
+echo 正在啟動安裝程式...
+echo 腳本位置: %~dp0
 echo.
 
 REM 步驟 0: 環境檢查
