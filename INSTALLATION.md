@@ -31,24 +31,60 @@ git clone https://github.com/backtrue/sbir-grants.git
 cd sbir-grants
 ```
 
-#### Step 2: 安裝 MCP Server 依賴
+#### Step 2: 安裝 uv（如果還沒安裝）
 
+**檢查是否已安裝**：
 ```bash
-cd mcp-server
-
-# 使用 uv（推薦）
-uv pip install -e .
-
-# 或使用 pip
-pip install -e .
+uv --version
 ```
 
-#### Step 3: 配置 Claude Desktop
+**如果出現 `command not found`，請安裝 uv**：
+
+**macOS/Linux**:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**或使用 Homebrew**:
+```bash
+brew install uv
+```
+
+**Windows**:
+```powershell
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+**或者跳過 uv，直接使用 pip**（見下方替代方案）
+
+#### Step 3: 安裝 MCP Server 依賴
+
+**選項 A：使用 uv（推薦，更快）**
+```bash
+cd mcp-server
+uv pip install mcp httpx pydantic
+```
+
+**選項 B：使用 pip（如果沒有 uv）**
+```bash
+cd mcp-server
+pip install mcp httpx pydantic
+```
+
+**或者使用 requirements.txt**：
+```bash
+cd mcp-server
+pip install -r requirements.txt
+```
+
+#### Step 4: 配置 Claude Desktop
 
 編輯 Claude Desktop 設定檔：
 
 **macOS**: 
 ```bash
+# 如果檔案不存在，會自動創建
+mkdir -p ~/Library/Application\ Support/Claude
 open ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 
@@ -64,6 +100,7 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
 
 **加入以下設定**（請修改路徑為您的實際路徑）：
 
+**選項 A：使用 uv（如果您安裝了 uv）**
 ```json
 {
   "mcpServers": {
@@ -80,7 +117,24 @@ open ~/Library/Application\ Support/Claude/claude_desktop_config.json
 }
 ```
 
-⚠️ **重要**：請將 `/Users/YOUR_USERNAME/Documents/sbir-grants` 改成您的實際路徑！
+**選項 B：使用 python（如果沒有 uv）**
+```json
+{
+  "mcpServers": {
+    "sbir-data": {
+      "command": "python",
+      "args": [
+        "/Users/YOUR_USERNAME/Documents/sbir-grants/mcp-server/server.py"
+      ]
+    }
+  }
+}
+```
+
+⚠️ **重要**：
+- 請將 `/Users/YOUR_USERNAME/Documents/sbir-grants` 改成您的實際路徑！
+- macOS 用戶路徑範例：`/Users/backtrue/Documents/sbir-grants`
+- Windows 用戶路徑範例：`C:\\Users\\YourName\\Documents\\sbir-grants`
 
 #### Step 4: 重啟 Claude Desktop
 
