@@ -22,10 +22,13 @@ Thumbs.db
 # Build outputs
 *.pdf
 
+# Real SBIR proposals (confidential)
+references/real/
+
 # Personal notes (not for sharing)
 notes/
 drafts/
 personal/
 
-# Real SBIR proposals (confidential)
-references/real/
+# Real SBIR proposals (confidential) - temporarily disabled for analysis
+# references/real/
