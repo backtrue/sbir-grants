@@ -555,6 +555,8 @@ async def search_knowledge_base(query: str, category: str = "all") -> list[TextC
 **搜尋模式**：{search_mode}
 **搜尋關鍵字**：{query}
 
+💡 **提示**：以下結果包含文件來源和內容預覽，Claude 會自動閱讀這些內容並為您綜合答案。
+
 """
         for i, file_info in enumerate(final_scores[:10], 1):
             # 顯示匹配度
@@ -576,15 +578,28 @@ async def search_knowledge_base(query: str, category: str = "all") -> list[TextC
             if content_snippet:
                 result += f"   > 「{content_snippet}」\n"
             
-            result += f"   - 類別：{file_info['category']}\n"
-            result += f"   - 路徑：`{file_info['path']}`\n"
-            result += f"   - 使用 `read_document` 工具讀取此文件\n\n"
+            result += f"   - 📁 類別：{file_info['category']}\n"
+            result += f"   - 📍 位置：`{file_info['path']}`\n"
+            
+            # 加入官方來源提示
+            if "sbir_guidelines" in file_info['path'] or "sbir_2026" in file_info['path']:
+                result += f"   - 🏛️ **官方規範** - 請以經濟部中小及新創企業署公告為準\n"
+                result += f"   - 🔗 官網：https://www.sbir.org.tw/\n"
+            
+            result += f"   - 🔍 使用 `read_document` 工具可讀取完整內容\n\n"
         
         if len(final_scores) > 10:
             result += f"\n（還有 {len(final_scores) - 10} 個相關段落未顯示）\n"
         
         if not semantic_available:
             result += "\n💡 **提示**：執行 `python mcp-server/build_index.py` 可啟用 AI 語意搜尋，提升搜尋準確度。\n"
+        
+        # 加入引用說明
+        result += "\n---\n\n"
+        result += "📌 **如何使用這些結果**：\n"
+        result += "- Claude 會自動閱讀上述內容並為您綜合答案\n"
+        result += "- 答案會包含具體的來源引用\n"
+        result += "- 如需查證，可使用 `read_document` 工具閱讀完整文件\n"
 
     
     # 檢查是否有新版本
