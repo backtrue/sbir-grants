@@ -529,6 +529,14 @@ async def search_knowledge_base(query: str, category: str = "all") -> list[TextC
             if content:
                 # 取前 100 個字符作為內容片段
                 info["content_snippet"] = content[:100].replace('\n', ' ').strip()
+            
+            # 提取來源資訊
+            if metadata.get("source_url"):
+                info["source_url"] = metadata.get("source_url")
+            if metadata.get("source_title"):
+                info["source_title"] = metadata.get("source_title")
+            if metadata.get("source_date"):
+                info["source_date"] = metadata.get("source_date")
         
         final_scores.append(info)
 
@@ -569,6 +577,9 @@ async def search_knowledge_base(query: str, category: str = "all") -> list[TextC
             # 檢查是否有 chunk 預覽
             preview = file_info.get("preview", "")
             content_snippet = file_info.get("content_snippet", "")
+            source_url = file_info.get("source_url")
+            source_title = file_info.get("source_title")
+            source_date = file_info.get("source_date")
             
             result += f"{i}. **{file_info['name']}** ({relevance})\n"
             
@@ -581,10 +592,13 @@ async def search_knowledge_base(query: str, category: str = "all") -> list[TextC
             result += f"   - 📁 類別：{file_info['category']}\n"
             result += f"   - 📍 位置：`{file_info['path']}`\n"
             
-            # 加入官方來源提示
-            if "sbir_guidelines" in file_info['path'] or "sbir_2026" in file_info['path']:
-                result += f"   - 🏛️ **官方規範** - 請以經濟部中小及新創企業署公告為準\n"
-                result += f"   - 🔗 官網：https://www.sbir.org.tw/\n"
+            # 顯示官方來源
+            if source_url:
+                result += f"   - 🔗 **官方出處**：{source_url}\n"
+            if source_title:
+                result += f"   - 📋 來源標題：{source_title}\n"
+            if source_date:
+                result += f"   - 📅 發布日期：{source_date}\n"
             
             result += f"   - 🔍 使用 `read_document` 工具可讀取完整內容\n\n"
         

@@ -6,7 +6,7 @@
 
 import re
 import numpy as np
-from typing import Optional
+from typing import Optional, Dict, Tuple
 
 # 懶加載的全域變數
 _embedding_model = None
@@ -21,6 +21,28 @@ def get_embedding_model():
         _embedding_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
         print("Embedding 模型載入完成")
     return _embedding_model
+
+
+def extract_frontmatter(content: str) -> Tuple[Dict, str]:
+    """
+    提取 YAML frontmatter
+    
+    Returns:
+        (frontmatter_dict, content_without_frontmatter)
+    """
+    frontmatter = {}
+    
+    if content.strip().startswith('---'):
+        parts = content.split('---', 2)
+        if len(parts) >= 3:
+            try:
+                import yaml
+                frontmatter = yaml.safe_load(parts[1]) or {}
+            except Exception as e:
+                print(f"Warning: Failed to parse frontmatter: {e}")
+            content = parts[2].strip()
+    
+    return frontmatter, content
 
 
 def split_chinese_sentences(text: str) -> list[str]:
@@ -102,6 +124,9 @@ def semantic_chunk(
     Returns:
         list of chunks with metadata
     """
+    # 0. 提取 frontmatter
+    frontmatter, content = extract_frontmatter(content)
+    
     # 1. 分句
     sentences = split_chinese_sentences(content)
     
@@ -114,7 +139,10 @@ def semantic_chunk(
                 "file": filename,
                 "file_path": file_path,
                 "chunk_index": 0,
-                "total_chunks": 1
+                "total_chunks": 1,
+                "source_url": frontmatter.get("source_url"),
+                "source_title": frontmatter.get("source_title"),
+                "source_date": frontmatter.get("source_date")
             }
         }]
     
@@ -191,7 +219,10 @@ def semantic_chunk(
                 "file_path": file_path,
                 "chunk_index": i,
                 "total_chunks": total_chunks,
-                "preview": first_line
+                "preview": first_line,
+                "source_url": frontmatter.get("source_url"),
+                "source_title": frontmatter.get("source_title"),
+                "source_date": frontmatter.get("source_date")
             }
         })
     
