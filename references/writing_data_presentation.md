@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR SBIR 計畫書數據呈現技巧
+source_date: 2026-01-01
+---
+
 # SBIR 計畫書數據呈現技巧
 
 > 「沒有數據的觀點只是意見，有數據支持的觀點才是洞見。」

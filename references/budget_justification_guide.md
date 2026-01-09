@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 經費編列說明與委外合理性指南
+source_date: 2026-01-01
+---
+
 # 經費編列說明與委外合理性指南
 
 *基於真實 SBIR 審查案例*

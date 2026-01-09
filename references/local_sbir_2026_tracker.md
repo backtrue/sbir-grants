@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 2026 年（115 年度）地方型 SBIR 追蹤表
+source_date: 2026-01-01
+---
+
 # 2026 年（115 年度）地方型 SBIR 追蹤表
 
 *即時追蹤全台 22 縣市地方型 SBIR 公告狀態*

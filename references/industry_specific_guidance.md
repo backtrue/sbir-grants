@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 產業別差異化策略
+source_date: 2026-01-01
+---
+
 # 產業別差異化策略
 
 ## 概述

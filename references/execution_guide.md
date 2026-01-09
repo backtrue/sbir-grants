@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR SBIR 計畫執行指南
+source_date: 2026-01-01
+---
+
 # SBIR 計畫執行指南
 
 > 通過審查只是開始，成功結案才是目標。

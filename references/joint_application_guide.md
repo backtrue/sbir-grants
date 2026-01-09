@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 聯合申請指南
+source_date: 2026-01-01
+---
+
 # 聯合申請指南
 
 > 兩家以上企業聯合申請，補助上限加倍，但複雜度也加倍。

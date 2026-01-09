@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 商業化策略規劃
+source_date: 2026-01-01
+---
+
 # 商業化策略規劃
 
 ## 概述

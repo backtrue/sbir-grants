@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 審查標準詳解
+source_date: 2026-01-01
+---
+
 # 審查標準詳解
 
 ## 概述

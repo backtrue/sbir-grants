@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR SWOT 分析深化指南
+source_date: 2026-01-01
+---
+
 # SWOT 分析深化指南
 
 *基於真實 SBIR 成功案例*

@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 結案報告撰寫指南
+source_date: 2026-01-01
+---
+
 # 結案報告撰寫指南
 
 > 結案報告是計畫的成績單，寫好它，為未來申請加分。

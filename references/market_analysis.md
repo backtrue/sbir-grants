@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 市場分析撰寫指南
+source_date: 2026-01-01
+---
+
 # 市場分析撰寫指南
 
 ## 概述

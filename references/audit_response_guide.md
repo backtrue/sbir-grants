@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 審查意見回覆指南
+source_date: 2026-01-01
+---
+
 # 審查意見回覆指南
 
 *基於真實 SBIR 審查案例*

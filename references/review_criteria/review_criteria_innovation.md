@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 創新性評分標準
+source_date: 2026-01-01
+---
+
 # 創新性評分標準
 
 > 基於 SBIR 官方審查標準與實務經驗整理

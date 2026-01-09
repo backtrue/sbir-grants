@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 智財策略指南
+source_date: 2026-01-01
+---
+
 # 智財策略指南
 
 > 研發成果要轉化為競爭優勢，智財佈局是關鍵。

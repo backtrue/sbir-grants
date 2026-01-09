@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 可行性評分標準
+source_date: 2026-01-01
+---
+
 # 可行性評分標準
 
 ## 評分權重

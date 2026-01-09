@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR SBIR 簡報技巧指南
+source_date: 2026-01-01
+---
+
 # SBIR 簡報技巧指南
 
 > 簡報是計畫書的「現場考試」，15 分鐘決定你的成敗。

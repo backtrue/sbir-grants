@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR SBIR 計畫書說故事技巧
+source_date: 2026-01-01
+---
+
 # SBIR 計畫書說故事技巧
 
 > 「評審每天看幾十份計畫書，好的故事能讓你的計畫脫穎而出。」

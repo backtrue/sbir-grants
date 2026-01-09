@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR Phase 1 先期研究撰寫策略
+source_date: 2026-01-01
+---
+
 # Phase 1 先期研究撰寫策略
 
 ## 概述

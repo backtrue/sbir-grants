@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 市場分析方法論
+source_date: 2026-01-01
+---
+
 # 市場分析方法論
 
 > ⚠️ **重要聲明**：本方法論整合 SBIR 官方審查標準、實務顧問建議與成功案例分析，僅供撰寫輔助參考。

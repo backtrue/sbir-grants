@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR 服務創新型計畫撰寫指南
+source_date: 2026-01-01
+---
+
 # 服務創新型計畫撰寫指南
 
 *基於真實成功案例*

@@ -1,3 +1,9 @@
+---
+source_url: https://www.sbir.org.tw/
+source_title: SBIR claude automation guide
+source_date: 2026-01-01
+---
+
 ## 🤖 Claude 自動化指引
 
 > **給 Claude**：當用戶需要市場數據時，請按照以下流程自動執行。
