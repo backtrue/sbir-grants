@@ -7,13 +7,23 @@ SBIR Data MCP Server
 2. 工研院 IEK、資策會 MIC 由 Claude 的 search_web 處理
 """
 
-from mcp.server import Server
-from mcp.types import Tool, TextContent
-import httpx
+import os
+import glob
 import json
+import re
+import time
+import math
+import subprocess
+import logging
 from typing import Any, Optional
 from datetime import datetime
+from pathlib import Path
+
+from mcp.server import Server
+from mcp.types import Tool, TextContent
 from pydantic import BaseModel
+
+logger = logging.getLogger(__name__)
 
 # Import proposal generator functions
 try:
@@ -264,6 +274,67 @@ async def list_tools() -> list[Tool]:
                 },
                 "required": ["content"]
             }
+        ),
+        Tool(
+            name="calculate_roi",
+            description="計算建議的產值目標。根據補助金額、產業別、計畫階段等，自動計算最低、建議、優秀三種產值目標及 ROAS。",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "subsidy_amount": {
+                        "type": "number",
+                        "description": "補助金額（萬元）"
+                    },
+                    "industry": {
+                        "type": "string",
+                        "description": "產業別",
+                        "enum": ["製造業", "機械", "化工/材料", "電子", "資通訊", "軟體", "數位服務", "生技/醫療", "服務業", "服務創新"],
+                        "default": "製造業"
+                    },
+                    "phase": {
+                        "type": "string",
+                        "description": "計畫階段",
+                        "enum": ["phase1", "phase2"],
+                        "default": "phase1"
+                    },
+                    "company_revenue": {
+                        "type": "number",
+                        "description": "公司年營收（萬元，可選）",
+                        "default": 0
+                    }
+                },
+                "required": ["subsidy_amount"]
+            }
+        ),
+        Tool(
+            name="validate_roi",
+            description="驗證產值是否合理。檢查預期產值與補助金額的比例（ROAS）是否符合產業標準，並提供改進建議。",
+            inputSchema={
+                "type": "object",
+                "properties": {
+                    "subsidy_amount": {
+                        "type": "number",
+                        "description": "補助金額（萬元）"
+                    },
+                    "expected_revenue_3years": {
+                        "type": "number",
+                        "description": "預期 3 年累積產值（萬元）"
+                    },
+                    "industry": {
+                        "type": "string",
+                        "description": "產業別",
+                        "enum": ["製造業", "機械", "化工/材料", "電子", "資通訊", "軟體", "數位服務", "生技/醫療", "服務業", "服務創新"],
+                        "default": "製造業"
+                    },
+                    "phase": {
+                        "type": "string",
+                        "description": "計畫階段",
+                        "enum": ["phase1", "phase2"],
+                        "default": "phase1"
+                    }
+                },
+                "required": ["subsidy_amount", "expected_revenue_3years"]
+            }
         )
     ]
 
@@ -318,6 +389,20 @@ async def call_tool(name: str, arguments: Any) -> list[TextContent]:
             arguments.get("company_name", ""),
             arguments.get("project_name", "")
         )
+    elif name == "calculate_roi":
+        return await call_calculate_roi(
+            arguments["subsidy_amount"],
+            arguments.get("industry", "製造業"),
+            arguments.get("phase", "phase1"),
+            arguments.get("company_revenue", 0)
+        )
+    elif name == "validate_roi":
+        return await call_validate_roi(
+            arguments["subsidy_amount"],
+            arguments["expected_revenue_3years"],
+            arguments.get("industry", "製造業"),
+            arguments.get("phase", "phase1")
+        )
     else:
         raise ValueError(f"Unknown tool: {name}")
 
@@ -325,15 +410,10 @@ async def call_tool(name: str, arguments: Any) -> list[TextContent]:
 # 核心功能：知識庫搜尋與讀取
 # ============================================
 
-import os
-import glob
-
 # 取得專案根目錄（server.py 的上一層）
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # 版本檢查（每天最多檢查一次）
-import time
-import subprocess
 LAST_VERSION_CHECK = 0
 VERSION_CHECK_INTERVAL = 86400  # 24 小時
 
@@ -458,7 +538,8 @@ async def search_knowledge_base(query: str, category: str = "all") -> str:
                     "matched_keywords": len(set(matched_keywords)),
                     "total_keywords": len(keywords)
                 }
-        except Exception:
+        except (OSError, UnicodeDecodeError) as e:
+            logger.debug(f"無法讀取檔案 {file_path}: {e}")
             continue
     
     # ===== 2. 語意搜尋 (RAG) =====
@@ -482,7 +563,7 @@ async def search_knowledge_base(query: str, category: str = "all") -> str:
                 }
     except Exception as e:
         # 語意搜尋不可用，僅使用關鍵字搜尋
-        pass
+        logger.warning(f"語意搜尋不可用: {e}")
 
     
     # ===== 3. 混合排序 =====
@@ -565,8 +646,8 @@ async def search_knowledge_base(query: str, category: str = "all") -> str:
                 try:
                     with open(os.path.join(PROJECT_ROOT, cand["path"]), 'r', encoding='utf-8') as f:
                         cand["content"] = f.read(1000) # 只讀前 1000 字
-                except:
-                    cand["content"] = cand["name"] # 降級使用檔名
+                except (OSError, UnicodeDecodeError):
+                    cand["content"] = cand["name"]  # 降級使用檔名
         
         # 執行 Re-ranking
         try:
@@ -576,8 +657,6 @@ async def search_knowledge_base(query: str, category: str = "all") -> str:
             print(f"Re-ranking 步驟錯誤: {e}")
 
     # ===== 3.6. 時間加權 =====
-    from datetime import datetime
-    import math
     
     def apply_time_weight(score: float, source_date: str) -> float:
         """對較新的文件給予更高權重"""
@@ -603,7 +682,7 @@ async def search_knowledge_base(query: str, category: str = "all") -> str:
             weighted_score = score * (0.7 + 0.3 * time_decay)
             
             return weighted_score
-        except:
+        except (ValueError, TypeError):
             return score
     
     # 應用時間加權
@@ -712,6 +791,9 @@ async def search_knowledge_base(query: str, category: str = "all") -> str:
         result += "- 如需查證，可使用 `read_document` 工具閱讀完整文件\n"
 
     
+    # 寫回快取
+    cache.set(query, category, result)
+    
     # 檢查是否有新版本
     update_notice = check_for_updates()
     if update_notice:
@@ -727,8 +809,8 @@ async def read_document(file_path: str) -> list[TextContent]:
     
     full_path = os.path.join(PROJECT_ROOT, file_path)
     
-    # 安全檢查：確保路徑在專案目錄內
-    if not os.path.abspath(full_path).startswith(PROJECT_ROOT):
+    # 安全檢查：確保路徑在專案目錄內（使用 realpath 防止符號連結穿越）
+    if not os.path.realpath(full_path).startswith(os.path.realpath(PROJECT_ROOT)):
         return [TextContent(
             type="text",
             text=f"❌ 錯誤：無法讀取專案目錄外的檔案"
@@ -819,17 +901,12 @@ async def query_moea_statistics(
             type="text",
             text=f"❌ 不支援的產業別：{industry}\n\n支援的產業：{', '.join(industry_codes.keys())}"
         )]
-    
-    try:
-        # 實際 API 呼叫
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            # 這裡需要根據實際 API 文件調整
-            # 目前先回傳說明訊息
-            
-            result = f"""
+
+    # 注意：經濟部統計處 API 需要「功能代碼」才能查詢，目前返回指引訊息及書籤替代方案
+    result = f"""
 ## 經濟部統計處查詢結果
 
-**產業別**：{industry}  
+**產業別**：{industry}（代碼：{industry_code}）  
 **統計類型**：{stat_type}  
 **查詢期間**：{start_year} - {end_year}
 
@@ -862,14 +939,8 @@ https://nstatdb.dgbas.gov.tw/dgbasAll/webMain.aspx?sys=100&funid=API
 - 經濟部統計處：https://www.moea.gov.tw/Mns/dos/
 - 總體統計資料庫：https://nstatdb.dgbas.gov.tw/
 """
-            
-            return [TextContent(type="text", text=result)]
-            
-    except Exception as e:
-        return [TextContent(
-            type="text",
-            text=f"❌ 查詢失敗：{str(e)}\n\n建議使用 Claude 的 search_web 工具作為替代方案。"
-        )]
+
+    return [TextContent(type="text", text=result)]
 
 # ============================================
 # 輔助功能：搜尋經濟部網站
@@ -1212,8 +1283,10 @@ async def export_proposal_word(
                 else:
                     doc.add_paragraph(line)
         
-        # 儲存檔案
-        output_dir = os.path.expanduser("~/Documents")
+        # 儲存檔案 — 跨平台目錄偵測（~/Documents 在部分 Windows/Linux 不存在）
+        home = Path.home()
+        candidates = [home / "Desktop", home / "Documents", home / "文件", home / "桌面", home]
+        output_dir = next((str(p) for p in candidates if p.exists()), str(home))
         output_path = os.path.join(output_dir, f"{filename}.docx")
         doc.save(output_path)
         
@@ -1330,8 +1403,8 @@ async def check_proposal(proposal_content: str, phase: str = "phase1") -> list[T
         
         for item in category["items"]:
             total_items += 1
-            # 檢查是否包含關鍵字
-            found = any(keyword in proposal_content for keyword in item["keywords"])
+            # 檢查是否包含關鍵字（不區分大小寫）
+            found = any(keyword.lower() in content_lower for keyword in item["keywords"])
             if found:
                 passed_items += 1
                 status = "✅"
@@ -1417,6 +1490,66 @@ async def check_proposal(proposal_content: str, phase: str = "phase1") -> list[T
 """
     
     return [TextContent(type="text", text=output)]
+
+# ============================================
+# ROI 計算工具
+# ============================================
+
+async def call_calculate_roi(
+    subsidy_amount: float,
+    industry: str = "製造業",
+    phase: str = "phase1",
+    company_revenue: float = 0
+) -> list[TextContent]:
+    """計算建議的產值目標"""
+    try:
+        from roi_calculator import calculate_roi, format_roi_report
+        
+        result = calculate_roi(
+            subsidy_amount=subsidy_amount,
+            phase=phase,
+            industry=industry,
+            project_duration=12 if phase == "phase1" else 24,
+            company_revenue=company_revenue
+        )
+        
+        report = format_roi_report(result)
+        
+        return [TextContent(type="text", text=report)]
+        
+    except Exception as e:
+        return [TextContent(
+            type="text",
+            text=f"❌ ROI 計算失敗：{str(e)}"
+        )]
+
+
+async def call_validate_roi(
+    subsidy_amount: float,
+    expected_revenue_3years: float,
+    industry: str = "製造業",
+    phase: str = "phase1"
+) -> list[TextContent]:
+    """驗證產值是否合理"""
+    try:
+        from roi_calculator import validate_roi, format_validation_report
+        
+        result = validate_roi(
+            subsidy_amount=subsidy_amount,
+            expected_revenue_3years=expected_revenue_3years,
+            industry=industry,
+            phase=phase
+        )
+        
+        report = format_validation_report(result)
+        
+        return [TextContent(type="text", text=report)]
+        
+    except Exception as e:
+        return [TextContent(
+            type="text",
+            text=f"❌ ROI 驗證失敗：{str(e)}"
+        )]
 
 # ============================================
 # 主程式入口

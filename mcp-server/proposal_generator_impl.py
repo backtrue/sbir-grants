@@ -1,8 +1,6 @@
 """
-計畫書生成器實作 - 添加到 server.py 的函數
+計畫書生成器實作
 """
-
-# 在 server.py 的適當位置添加以下代碼
 
 # ============================================
 # 核心功能：互動式計畫書生成器
@@ -10,11 +8,20 @@
 
 import os
 import json
+import logging
 from pathlib import Path
 from datetime import datetime
 
+from mcp.types import TextContent
+
+logger = logging.getLogger(__name__)
+
 # 狀態檔案路徑
 STATE_FILE = os.path.expanduser("~/.sbir_proposal_state.json")
+
+# 專案根目錄（此模組所在目錄的上一層）
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 async def start_proposal_generator(phase: str = "phase1") -> list[TextContent]:
     """
