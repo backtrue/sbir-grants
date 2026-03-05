@@ -1,0 +1,76 @@
+{
+    "enrichable_questions": {
+        "problem_description": {
+            "min_chars": 60,
+            "criteria": "必須包含：(1)具體的痛點描述，(2)受影響的對象，(3)問題的量化嚴重性或損失。一句話或目標陳述不算充分。"
+        },
+        "current_solutions": {
+            "min_chars": 60,
+            "criteria": "必須包含：(1)至少1-2個具體的現有競品或替代方案名稱，(2)每個方案的具體缺點（最好有數字如成本、時間、限制）。"
+        },
+        "solution_description": {
+            "min_chars": 100,
+            "criteria": "必須清楚說明：(1)解決方案的核心功能是什麼，(2)如何解決前述問題，(3)目標使用者是誰。須有具體技術或方法描述。"
+        },
+        "innovation_points": {
+            "min_chars": 80,
+            "criteria": "必須列出至少 2-3 個「與現有方案相比」的具體創新差異，且每個差異要有說明（數字、技術手段、獨特性）。"
+        },
+        "quantified_benefits": {
+            "min_chars": 50,
+            "criteria": "必須包含量化數字，例如「提升 X%」「降低 Y 萬元」「縮短 Z 小時」。沒有數字的描述對審查委員無說服力。"
+        },
+        "technical_barriers": {
+            "min_chars": 50,
+            "criteria": "必須說明具體的進入門檻，例如：專利、獨有數據集、特殊演算法、長期積累的Know-how，讓委員確信競爭者無法輕易複製。"
+        },
+        "competitive_advantage": {
+            "min_chars": 50,
+            "criteria": "必須有數字或具體對比，說明「比競爭對手好在哪、好多少」，泛泛而談（如「更快更好」）不算充分。"
+        },
+        "key_risks": {
+            "min_chars": 60,
+            "criteria": "必須列出至少 2 個具體技術或市場風險，並針對每個風險說明「對策」。光列出風險沒有對策會讓委員認為你沒有想清楚。"
+        },
+        "target_market": {
+            "min_chars": 40,
+            "criteria": "必須指定目標市場的範圍（地區）、規模（企業大小、員工數或年營收）、以及具體使用場景，不能只寫「中小企業」。"
+        },
+        "market_size": {
+            "min_chars": 50,
+            "criteria": "必須包含 TAM（潛在總市場）、SAM（可服務市場）、SOM（可獲得市場）的預估與推算邏輯。若使用者不知如何估算，務必提供明確的定義教學與假定的數字草稿供其參考修改。"
+        },
+        "current_trl": {
+            "min_chars": 20,
+            "criteria": "必須說明目前的技術就緒度 (TRL)，並簡述達成該階段的實證（如：實驗室測試數據、雛型機完成）。若使用者不懂 TRL，請溫柔解釋 TRL 1-9 的含義並依其產業假定一個現況。"
+        },
+        "target_trl": {
+            "min_chars": 20,
+            "criteria": "必須說明計畫完成後預計達成的技術就緒度 (TRL)，例如從 TRL 4 推進至 TRL 6，並說明具體將完成什麼驗證。若使用者不懂，請解釋並假定一個合理目標。"
+        },
+        "team_composition": {
+            "min_chars": 60,
+            "criteria": "必須列出每位核心成員的：姓名或職稱、與本計畫相關的專長或年資。委員需要確認團隊能力足以執行計畫。"
+        },
+        "budget_breakdown": {
+            "min_chars": 50,
+            "criteria": "必須說明各費用類別（人事費、設備費、材料費等）的金額或比例，讓委員確認經費使用是否合理。"
+        },
+        "revenue_calculation_basis": {
+            "min_chars": 100,
+            "criteria": "這題最重要！必須包含：(1)市場規模數據來源，(2)目標市佔率，(3)客戶數量計劃，(4)單客戶收費，(5)三年數字如何推算。沒有依據的數字審查必落榜。"
+        },
+        "expected_revenue_year1": {
+            "min_chars": 20,
+            "criteria": "請填寫計畫結束後第 1 年的預期營收（純數字）。若使用者不知如何估算，請根據 context 內的預估總經費 (budget_total)，抓取約 1~1.5倍的金額幫他預填，並溫柔教學 SBIR 審查看重 3 年產值達補助款 3~5 倍的標準。"
+        },
+        "expected_revenue_year2": {
+            "min_chars": 20,
+            "criteria": "請填寫計畫結束後第 2 年的預期營收（純數字）。若使用者不知如何估算，請根據 year1 或經費總額，抓取合理成長 (如 1.5~2 倍) 的金額預填。"
+        },
+        "expected_revenue_year3": {
+            "min_chars": 20,
+            "criteria": "請填寫計畫結束後第 3 年的預期營收（純數字）。若使用者不知如何估算，請確保 year1+year2+year3 的總和至少超過預估總經費 (budget_total) 的 3~5 倍，以免不符投資效益比。"
+        }
+    }
+}

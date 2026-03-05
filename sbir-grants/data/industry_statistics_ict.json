@@ -1,0 +1,87 @@
+{
+    "industry": "資通訊",
+    "last_updated": "2024-12-31",
+    "sources": [
+        {
+            "name": "資策會 MIC",
+            "year": 2024,
+            "data": {
+                "market_size": {
+                    "value": 2800,
+                    "unit": "億台幣",
+                    "description": "台灣資通訊產業產值"
+                },
+                "growth_rate": {
+                    "value": 8.5,
+                    "unit": "%",
+                    "period": "2024-2030 CAGR"
+                },
+                "ai_market": {
+                    "value": 450,
+                    "unit": "億台幣",
+                    "description": "AI 應用市場規模"
+                },
+                "cloud_market": {
+                    "value": 380,
+                    "unit": "億台幣",
+                    "description": "雲端服務市場規模"
+                }
+            },
+            "url": "https://mic.iii.org.tw/"
+        },
+        {
+            "name": "經濟部統計處",
+            "year": 2024,
+            "data": {
+                "software_value": {
+                    "value": 1200,
+                    "unit": "億台幣",
+                    "description": "軟體產業產值"
+                },
+                "companies": {
+                    "value": 15000,
+                    "unit": "家",
+                    "description": "資通訊產業公司數"
+                },
+                "employment": {
+                    "value": 180000,
+                    "unit": "人",
+                    "description": "資通訊產業就業人數"
+                }
+            },
+            "url": "https://www.moea.gov.tw/Mns/dos/"
+        }
+    ],
+    "key_segments": {
+        "AI 應用": {
+            "market_share": "16%",
+            "value": 450,
+            "unit": "億台幣",
+            "growth_rate": "15%"
+        },
+        "雲端服務": {
+            "market_share": "14%",
+            "value": 380,
+            "unit": "億台幣",
+            "growth_rate": "12%"
+        },
+        "軟體開發": {
+            "market_share": "43%",
+            "value": 1200,
+            "unit": "億台幣",
+            "growth_rate": "8%"
+        },
+        "系統整合": {
+            "market_share": "27%",
+            "value": 770,
+            "unit": "億台幣",
+            "growth_rate": "6%"
+        }
+    },
+    "trends": [
+        "生成式 AI",
+        "雲端原生",
+        "資安防護",
+        "數位轉型"
+    ]
+}

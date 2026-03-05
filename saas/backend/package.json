@@ -1,0 +1,21 @@
+{
+  "name": "backend",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^3.0.46",
+    "@ai-sdk/google": "^3.0.30",
+    "@ai-sdk/openai": "^3.0.30",
+    "ai": "^6.0.97",
+    "hono": "^4.12.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260302.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.4.0"
+  }
+}

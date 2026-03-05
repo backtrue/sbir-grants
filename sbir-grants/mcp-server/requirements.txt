@@ -1,0 +1,12 @@
+# SBIR MCP Server 核心依賴
+mcp>=0.9.0,<2.0.0
+httpx>=0.25.0
+pydantic>=2.0.0
+beautifulsoup4>=4.12.0
+python-docx>=0.8.11
+pyyaml>=6.0
+pymupdf>=1.23.0
+
+# AI 語意搜尋（向量索引）
+chromadb>=0.4.0
+sentence-transformers>=2.2.2

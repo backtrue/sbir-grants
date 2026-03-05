@@ -1,0 +1,364 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "phase": "phase2",
+        "total_questions": 35,
+        "estimated_time": "45-60 分鐘",
+        "note": "Phase 2 需要更深入的技術、市場和執行規劃"
+    },
+    "questions": [
+        {
+            "id": "company_name",
+            "category": "基本資訊",
+            "order": 1,
+            "question": "請問您的公司全名是？",
+            "type": "text",
+            "required": true,
+            "placeholder": "例如：台灣創新科技股份有限公司"
+        },
+        {
+            "id": "industry",
+            "category": "基本資訊",
+            "order": 2,
+            "question": "請問您的公司主要產業是？",
+            "type": "choice",
+            "required": true,
+            "options": [
+                "機械",
+                "化工/材料",
+                "電子",
+                "資通訊",
+                "生技/醫療",
+                "服務業",
+                "綠能/環保"
+            ]
+        },
+        {
+            "id": "company_size",
+            "category": "基本資訊",
+            "order": 3,
+            "question": "請問您的公司員工人數？",
+            "type": "number",
+            "required": true,
+            "validation": {
+                "min": 1,
+                "max": 199,
+                "warning": "SBIR 要求員工數 < 200 人"
+            }
+        },
+        {
+            "id": "capital",
+            "category": "基本資訊",
+            "order": 4,
+            "question": "請問您的公司實收資本額（萬元）？",
+            "type": "number",
+            "required": true,
+            "validation": {
+                "min": 1,
+                "max": 10000,
+                "warning": "SBIR 要求實收資本額 < 1 億元"
+            }
+        },
+        {
+            "id": "project_leader",
+            "category": "基本資訊",
+            "order": 5,
+            "question": "請問計畫主持人姓名及職稱？",
+            "type": "text",
+            "required": true,
+            "placeholder": "例如：王小明 / 技術長"
+        },
+        {
+            "id": "phase1_completed",
+            "category": "基本資訊",
+            "order": 6,
+            "question": "是否已完成 Phase 1？如是，請簡述成果",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：已於 2024 年完成 Phase 1，完成雛型開發並達到 85% 準確率..."
+        },
+        {
+            "id": "problem_description",
+            "category": "問題陳述與市場需求",
+            "order": 7,
+            "question": "請描述您要解決的核心問題（3-5 句話）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：傳統製造業缺乏即時生產數據，導致良率低、成本高...",
+            "validation": {
+                "min_length": 100,
+                "max_length": 800
+            }
+        },
+        {
+            "id": "market_pain_evidence",
+            "category": "問題陳述與市場需求",
+            "order": 8,
+            "question": "請提供市場痛點的證據（客戶訪談、調查數據等）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：訪談 20 家工廠，其中 85% 表示此問題每年造成至少 200 萬損失..."
+        },
+        {
+            "id": "current_solutions_analysis",
+            "category": "問題陳述與市場需求",
+            "order": 9,
+            "question": "請詳細分析現有解決方案的優缺點",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "競品 A：優點...缺點...\n競品 B：優點...缺點..."
+        },
+        {
+            "id": "solution_description",
+            "category": "創新構想",
+            "order": 10,
+            "question": "請詳細描述您的解決方案",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "包含技術架構、作用原理、關鍵組件說明...",
+            "validation": {
+                "min_length": 200,
+                "max_length": 1500
+            }
+        },
+        {
+            "id": "technical_architecture",
+            "category": "創新構想",
+            "order": 11,
+            "question": "請描述技術架構（系統組成、模組劃分）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n1. 資料收集層：感測器模組\n2. 分析處理層：AI 運算引擎\n3. 應用展示層：Web Dashboard"
+        },
+        {
+            "id": "innovation_points",
+            "category": "創新構想",
+            "order": 12,
+            "question": "您的解決方案有哪些創新點？（請列出 3-5 個，並說明創新程度）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n1. 【突破性創新】使用自研輕量化 AI 模型，較傳統方法準確率提升 40%\n2. 【改良式創新】改進既有演算法，處理速度提升 3 倍\n..."
+        },
+        {
+            "id": "patent_status",
+            "category": "創新構想",
+            "order": 13,
+            "question": "目前的專利佈局狀況？（已獲得/申請中/規劃中）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 已核准：發明專利 TW I123456「XX 方法」\n- 申請中：新型專利 1 件\n- 規劃：Phase 2 期間申請 2 件"
+        },
+        {
+            "id": "quantified_benefits",
+            "category": "創新構想",
+            "order": 14,
+            "question": "預期可以帶來哪些量化效益？（請用具體數字說明）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 良率提升：15% → 25%\n- 成本降低：每年節省 300 萬\n- 時間節省：從 2 週縮短到 2 天"
+        },
+        {
+            "id": "competitive_advantage",
+            "category": "創新構想",
+            "order": 15,
+            "question": "與競爭對手相比，您的優勢是什麼？（請用對比表說明）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "         本公司    競品A    競品B\n準確率    95%      80%      75%\n價格      50萬     200萬    150萬\n..."
+        },
+        {
+            "id": "technical_barriers",
+            "category": "創新構想",
+            "order": 16,
+            "question": "您的技術有哪些進入門檻？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：專利保護、累積 10 萬筆訓練數據、獨特製程 know-how..."
+        },
+        {
+            "id": "target_market",
+            "category": "市場分析",
+            "order": 17,
+            "question": "您的目標市場客戶輪廓",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 產業：金屬加工製造業\n- 規模：年營收 5000 萬 - 5 億\n- 數量：約 3,000 家\n- 決策者：廠長、生產經理"
+        },
+        {
+            "id": "tam_sam_som",
+            "category": "市場分析",
+            "order": 18,
+            "question": "請估算 TAM/SAM/SOM（含計算依據）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "TAM（總潛在市場）：500 億 = 製造業家數 × 平均導入費用\nSAM（可觸及市場）：100 億 = TAM × 20%（有需求且負擔得起）\nSOM（可獲得市場）：5 億 = SAM × 5%（3 年目標市佔）"
+        },
+        {
+            "id": "business_model",
+            "category": "市場分析",
+            "order": 19,
+            "question": "您的商業模式是？",
+            "type": "choice",
+            "required": true,
+            "options": [
+                "一次性銷售（賣斷）",
+                "訂閱制（SaaS）",
+                "授權金",
+                "專案服務",
+                "混合模式"
+            ]
+        },
+        {
+            "id": "pricing_strategy",
+            "category": "市場分析",
+            "order": 20,
+            "question": "您的定價策略是？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 基本版：30 萬/年\n- 專業版：60 萬/年\n- 定價依據：競品價格的 50%，同時保持 60% 毛利"
+        },
+        {
+            "id": "go_to_market",
+            "category": "市場分析",
+            "order": 21,
+            "question": "您的市場進入策略是？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n1. 第一年：直接銷售，鎖定 10 家示範客戶\n2. 第二年：建立經銷夥伴，擴展至 50 家\n3. 第三年：海外市場（東南亞）"
+        },
+        {
+            "id": "phase1_achievements",
+            "category": "技術可行性",
+            "order": 22,
+            "question": "Phase 1 的具體成果與數據",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 完成演算法開發，準確率 85%\n- 完成 3 家客戶場域驗證\n- 申請專利 1 件"
+        },
+        {
+            "id": "phase2_objectives",
+            "category": "技術可行性",
+            "order": 23,
+            "question": "Phase 2 的具體目標（請量化）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n1. 準確率從 85% 提升至 95%\n2. 完成產品化開發\n3. 導入 10 家付費客戶\n4. 取得 ISO 認證"
+        },
+        {
+            "id": "technical_roadmap",
+            "category": "技術可行性",
+            "order": 24,
+            "question": "Phase 2 技術發展路線圖",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "M1-M6：核心功能開發\nM7-M12：系統整合與優化\nM13-M18：產品化與驗證\nM19-M24：上市準備"
+        },
+        {
+            "id": "key_risks",
+            "category": "技術可行性",
+            "order": 25,
+            "question": "主要的技術風險有哪些？如何降低？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "風險 1：準確率可能無法達到 95%\n對策：準備多種演算法方案，持續優化\n\n風險 2：整合困難\n對策：提早進行整合測試..."
+        },
+        {
+            "id": "team_composition",
+            "category": "團隊組成",
+            "order": 26,
+            "question": "您的核心團隊有哪些成員？（姓名、職稱、專長、負責工作）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "1. 王小明 / 計畫主持人 / AI 專家 / 負責演算法開發\n2. 李大華 / 技術經理 / 系統架構 / 負責系統整合\n...",
+            "validation": {
+                "min_length": 100,
+                "max_length": 1000
+            }
+        },
+        {
+            "id": "team_experience",
+            "category": "團隊組成",
+            "order": 27,
+            "question": "團隊過往的相關成功經驗",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 曾執行經濟部科專計畫，結案評比優等\n- 團隊成員曾於 XX 公司開發類似產品\n- 發表相關技術論文 5 篇"
+        },
+        {
+            "id": "external_resources",
+            "category": "團隊組成",
+            "order": 28,
+            "question": "是否有外部合作資源？（學術機構、技術夥伴等）",
+            "type": "textarea",
+            "required": false,
+            "placeholder": "例如：\n- 與台大資工系 XXX 教授合作\n- 與工研院 XX 所技術合作\n- XX 公司為策略夥伴"
+        },
+        {
+            "id": "workplan_overview",
+            "category": "執行計畫",
+            "order": 29,
+            "question": "Phase 2 工作項目總覽（請列出主要工作項目）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "WP1：核心技術深化\nWP2：系統開發與整合\nWP3：場域驗證\nWP4：產品化與認證\nWP5：商業化準備"
+        },
+        {
+            "id": "milestones",
+            "category": "執行計畫",
+            "order": 30,
+            "question": "各階段里程碑與查核點",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "M6：完成核心模組開發，達到 XX 指標\nM12：完成系統整合，通過 XX 測試\nM18：完成場域驗證，取得 XX 認證\nM24：完成上市準備，簽約 XX 家客戶"
+        },
+        {
+            "id": "budget_total",
+            "category": "經費規劃",
+            "order": 31,
+            "question": "Phase 2 預計總經費（萬元）？",
+            "type": "number",
+            "required": true,
+            "validation": {
+                "min": 100,
+                "max": 1200,
+                "warning": "Phase 2 個別申請補助上限為 1,200 萬元（2025 新制）"
+            }
+        },
+        {
+            "id": "budget_breakdown",
+            "category": "經費規劃",
+            "order": 32,
+            "question": "經費細項分配",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "- 人事費：480 萬（40%）\n- 消耗性器材：240 萬（20%）\n- 設備費：120 萬（10%）\n- 委託研究費：180 萬（15%）\n- 差旅費：36 萬（3%）\n- 專利費：60 萬（5%）\n- 管理費：84 萬（7%）"
+        },
+        {
+            "id": "self_funding",
+            "category": "經費規劃",
+            "order": 33,
+            "question": "自籌款來源與規劃",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "補助款：600 萬（50%）\n自籌款：600 萬（50%）\n- 公司自有資金：400 萬\n- 銀行貸款：200 萬"
+        },
+        {
+            "id": "expected_outcomes",
+            "category": "預期效益",
+            "order": 34,
+            "question": "Phase 2 完成後預期的量化成果",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "技術成果：\n- 專利申請：3 件\n- 準確率達到 95%\n\n商業成果：\n- 付費客戶：10 家\n- 年營收：1,000 萬\n\n社會效益：\n- 新增就業：5 人"
+        },
+        {
+            "id": "commercialization_plan",
+            "category": "預期效益",
+            "order": 35,
+            "question": "後續商業化規劃（Phase 2 完成後 3 年）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "Y1：營收 1,000 萬，客戶 20 家\nY2：營收 3,000 萬，客戶 50 家，開拓海外市場\nY3：營收 5,000 萬，客戶 100 家，考慮 Phase 2+"
+        }
+    ]
+}

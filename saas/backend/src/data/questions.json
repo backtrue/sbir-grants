@@ -1,0 +1,399 @@
+{
+    "metadata": {
+        "version": "1.0",
+        "phase": "phase1",
+        "total_questions": 29,
+        "estimated_time": "35-50 分鐘"
+    },
+    "questions": [
+        {
+            "id": "company_name",
+            "category": "基本資訊",
+            "order": 1,
+            "question": "請問您的公司全名是？",
+            "type": "text",
+            "required": true,
+            "placeholder": "例如：台灣創新科技股份有限公司",
+            "validation": {
+                "min_length": 3,
+                "max_length": 50
+            }
+        },
+        {
+            "id": "industry",
+            "category": "基本資訊",
+            "order": 2,
+            "question": "請問您的公司主要產業是？",
+            "type": "choice",
+            "required": true,
+            "options": [
+                "機械",
+                "化工/材料",
+                "電子",
+                "資通訊",
+                "生技/醫療",
+                "服務業"
+            ]
+        },
+        {
+            "id": "company_size",
+            "category": "基本資訊",
+            "order": 3,
+            "question": "請問您的公司員工人數約為？",
+            "type": "number",
+            "required": true,
+            "validation": {
+                "min": 1,
+                "max": 199,
+                "warning": "SBIR 要求員工數 < 200 人"
+            }
+        },
+        {
+            "id": "capital",
+            "category": "基本資訊",
+            "order": 4,
+            "question": "請問您的公司實收資本額（萬元）？",
+            "type": "number",
+            "required": true,
+            "validation": {
+                "min": 1,
+                "max": 10000,
+                "warning": "SBIR 要求實收資本額 < 1 億元"
+            }
+        },
+        {
+            "id": "project_leader",
+            "category": "基本資訊",
+            "order": 5,
+            "question": "請問計畫主持人姓名及職稱？",
+            "type": "text",
+            "required": true,
+            "placeholder": "例如：王小明 / 技術長"
+        },
+        {
+            "id": "problem_description",
+            "category": "問題陳述",
+            "order": 6,
+            "question": "請描述您要解決的核心問題（2-3 句話）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：傳統製造業缺乏即時生產數據，導致良率低、成本高...",
+            "validation": {
+                "min_length": 50,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "problem_severity",
+            "category": "問題陳述",
+            "order": 7,
+            "question": "這個問題對目標客戶的影響有多嚴重？",
+            "type": "scale",
+            "required": true,
+            "scale": {
+                "min": 1,
+                "max": 10,
+                "labels": {
+                    "1": "輕微影響",
+                    "5": "中等影響",
+                    "10": "嚴重影響"
+                }
+            }
+        },
+        {
+            "id": "current_solutions",
+            "category": "問題陳述",
+            "order": 8,
+            "question": "目前市場上有哪些解決方案？它們的缺點是什麼？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：現有的 MES 系統價格昂貴（300萬以上），且需要長時間導入...",
+            "validation": {
+                "min_length": 50,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "customer_validation",
+            "category": "問題陳述",
+            "order": 9,
+            "question": "您是否已經訪談過潛在客戶？訪談了幾家？",
+            "type": "number",
+            "required": false,
+            "validation": {
+                "min": 0,
+                "max": 100
+            }
+        },
+        {
+            "id": "customer_pain_score",
+            "category": "問題陳述",
+            "order": 10,
+            "question": "客戶對這個問題的痛點評分平均為？（如果有訪談）",
+            "type": "scale",
+            "required": false,
+            "depends_on": {
+                "question_id": "customer_validation",
+                "condition": "> 0"
+            },
+            "scale": {
+                "min": 1,
+                "max": 10,
+                "labels": {
+                    "1": "不痛",
+                    "10": "非常痛"
+                }
+            }
+        },
+        {
+            "id": "solution_description",
+            "category": "創新構想",
+            "order": 11,
+            "question": "請描述您的解決方案（3-5 句話）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：我們開發一套低成本的 AI 視覺檢測系統，可以即時偵測產品瑕疵...",
+            "validation": {
+                "min_length": 100,
+                "max_length": 800
+            }
+        },
+        {
+            "id": "innovation_points",
+            "category": "創新構想",
+            "order": 12,
+            "question": "您的解決方案有哪些創新點？（請列出 3-5 個）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n1. 使用輕量化 AI 模型，降低硬體成本 80%\n2. 即時學習功能，無需重新訓練\n3. ...",
+            "validation": {
+                "min_length": 100,
+                "max_length": 800
+            }
+        },
+        {
+            "id": "competitive_advantage",
+            "category": "創新構想",
+            "order": 13,
+            "question": "與競爭對手相比，您的優勢是什麼？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：成本降低 70%、導入時間從 6 個月縮短到 2 週...",
+            "validation": {
+                "min_length": 50,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "quantified_benefits",
+            "category": "創新構想",
+            "order": 14,
+            "question": "預期可以帶來哪些量化效益？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：良率提升 15%、人力成本降低 30%、檢測時間減少 80%...",
+            "validation": {
+                "min_length": 50,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "technical_barriers",
+            "category": "創新構想",
+            "order": 15,
+            "question": "您的技術有哪些進入門檻？（讓競爭對手難以模仿）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：專利技術、獨特演算法、長期累積的訓練數據...",
+            "validation": {
+                "min_length": 50,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "target_market",
+            "category": "市場分析",
+            "order": 16,
+            "question": "您的目標市場是？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：台灣中小型製造業，年營收 5000 萬 - 5 億元...",
+            "validation": {
+                "min_length": 30,
+                "max_length": 300
+            }
+        },
+        {
+            "id": "market_size",
+            "category": "市場分析",
+            "order": 17,
+            "question": "您估計的市場規模（TAM/SAM/SOM）是？（如果知道）",
+            "type": "textarea",
+            "required": false,
+            "placeholder": "例如：TAM 500 億、SAM 100 億、SOM 5 億...\n如果不確定，可以跳過，我們會協助計算"
+        },
+        {
+            "id": "business_model",
+            "category": "市場分析",
+            "order": 18,
+            "question": "您的商業模式是？",
+            "type": "choice",
+            "required": true,
+            "options": [
+                "一次性銷售（賣斷）",
+                "訂閱制（SaaS）",
+                "授權金",
+                "混合模式",
+                "其他"
+            ]
+        },
+        {
+            "id": "current_trl",
+            "category": "可行性評估",
+            "order": 19,
+            "question": "您的技術目前的成熟度（TRL）是？",
+            "type": "choice",
+            "required": true,
+            "options": [
+                "TRL 1-2：基礎研究",
+                "TRL 3-4：概念驗證",
+                "TRL 5-6：原型開發",
+                "TRL 7-8：系統測試",
+                "TRL 9：商業化"
+            ]
+        },
+        {
+            "id": "target_trl",
+            "category": "可行性評估",
+            "order": 20,
+            "question": "Phase 1 結束後，預期達到的 TRL 是？",
+            "type": "choice",
+            "required": true,
+            "options": [
+                "TRL 4：實驗室驗證",
+                "TRL 5：相關環境驗證",
+                "TRL 6：原型展示"
+            ]
+        },
+        {
+            "id": "key_risks",
+            "category": "可行性評估",
+            "order": 21,
+            "question": "主要的技術風險有哪些？如何降低？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n風險 1：AI 模型準確率可能不足 → 對策：準備多種演算法備案\n風險 2：...",
+            "validation": {
+                "min_length": 50,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "team_composition",
+            "category": "團隊組成",
+            "order": 22,
+            "question": "您的核心團隊有哪些成員？（姓名、職稱、專長）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n1. 王小明 / 技術長 / AI 演算法專家，10 年經驗\n2. 李大華 / 產品經理 / 製造業背景，5 年經驗\n...",
+            "validation": {
+                "min_length": 50,
+                "max_length": 800
+            }
+        },
+        {
+            "id": "team_experience",
+            "category": "團隊組成",
+            "order": 23,
+            "question": "團隊是否有相關產業或技術的成功經驗？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：曾開發過類似系統、有相關專利、發表過論文...",
+            "validation": {
+                "min_length": 30,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "budget_total",
+            "category": "經費規劃",
+            "order": 24,
+            "question": "Phase 1 預計總經費（萬元）？",
+            "type": "number",
+            "required": true,
+            "validation": {
+                "min": 10,
+                "max": 150,
+                "warning": "Phase 1 補助上限為 150 萬元（2026 新制）"
+            }
+        },
+        {
+            "id": "budget_breakdown",
+            "category": "經費規劃",
+            "order": 25,
+            "question": "經費主要用途分配？",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 人事費：60 萬（60%）\n- 設備費：20 萬（20%）\n- 材料費：15 萬（15%）\n- 其他：5 萬（5%）",
+            "validation": {
+                "min_length": 50,
+                "max_length": 500
+            }
+        },
+        {
+            "id": "expected_revenue_year1",
+            "category": "預期成果",
+            "order": 26,
+            "question": "計畫結束後第 1 年，預期營收（萬元）？",
+            "type": "number",
+            "required": true,
+            "placeholder": "請填寫計畫結束後第 1 年的預期營收",
+            "validation": {
+                "min": 0,
+                "max": 100000
+            },
+            "help_text": "⚠️ 重要：SBIR 是政府投資，審查委員會評估投資效益比 (ROAS)。\n最低標準：補助 1 元 → 3 年累積產值至少 3 元\n建議目標：補助 1 元 → 3 年累積產值 5 元"
+        },
+        {
+            "id": "expected_revenue_year2",
+            "category": "預期成果",
+            "order": 27,
+            "question": "計畫結束後第 2 年，預期營收（萬元）？",
+            "type": "number",
+            "required": true,
+            "placeholder": "請填寫計畫結束後第 2 年的預期營收",
+            "validation": {
+                "min": 0,
+                "max": 100000
+            }
+        },
+        {
+            "id": "expected_revenue_year3",
+            "category": "預期成果",
+            "order": 28,
+            "question": "計畫結束後第 3 年，預期營收（萬元）？",
+            "type": "number",
+            "required": true,
+            "placeholder": "請填寫計畫結束後第 3 年的預期營收",
+            "validation": {
+                "min": 0,
+                "max": 100000
+            },
+            "help_text": "系統會自動計算 3 年累積產值與投資效益比 (ROAS)"
+        },
+        {
+            "id": "revenue_calculation_basis",
+            "category": "預期成果",
+            "order": 29,
+            "question": "營收預估的計算依據是？（非常重要！）",
+            "type": "textarea",
+            "required": true,
+            "placeholder": "例如：\n- 市場規模：5 億/年（根據 XXX 報告）\n- 目標市佔率：2%（第 3 年）\n- 預期營收 = 5 億 x 2% = 1,000 萬\n- 客戶開發計畫：第 1 年 5 家、第 2 年 15 家、第 3 年 30 家\n- 單一客戶年均消費：20 萬\n- 佐證：已有 3 家客戶簽署合作意向書",
+            "validation": {
+                "min_length": 100,
+                "max_length": 1000
+            },
+            "help_text": "⚠️ 審查委員最重視這一題！每個數字都要有依據。\n建議包含：市場規模、目標市佔率、客戶數量、單價、佐證資料"
+        }
+    ]
+}

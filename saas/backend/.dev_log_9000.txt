@@ -1,0 +1,125 @@
+
+> dev
+> wrangler dev
+
+
+ ⛅️ wrangler 4.67.0 (update available 4.68.1)
+─────────────────────────────────────────────
+Using vars defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                          Resource                  Mode
+env.DB (sbir-saas-db)                            D1 Database               local
+env.VECTORIZE (sbir_chunks)                      Vectorize Index           remote
+env.sbir_saas_bucket (sbir-saas-bucket)          R2 Bucket                 local
+env.AI                                           AI                        remote
+env.GOOGLE_CLIENT_ID ("(hidden)")                Environment Variable      local
+env.GOOGLE_CLIENT_SECRET ("(hidden)")            Environment Variable      local
+env.JWT_SECRET ("(hidden)")                      Environment Variable      local
+env.FRONTEND_URL ("(hidden)")                    Environment Variable      local
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Starting local server...
+[wrangler:warn] The latest compatibility date supported by the installed Cloudflare Workers Runtime is "2026-02-19",
+but you've requested "2026-02-23". Falling back to "2026-02-19"...
+Features enabled by your requested compatibility date may not be available.
+Upgrade to `wrangler@4.68.1` to remove this warning.
+[wrangler:info] Ready on http://localhost:8787
+[wrangler:info] OPTIONS /api/extract 204 No Content (16ms)
+[extract] RAW AI OBJECT: {"response":"[{\"question_id\": \"industry\", \"extracted_answer\": \"煜言顧問是一家專業的管理顧問公司，主要提供企業策略規劃、組織變革管理、人才培養等服務。\"}]","usage":{"prompt_tokens":1532,"completion_tokens":52,"total_tokens":1584}}
+[extract] Extracted raw text: [{"question_id": "industry", "extracted_answer": "煜言顧問是一家專業的管理顧問公司，主要提供企業策略規劃、組織變革管理、人才培養等服務。"}]
+[wrangler:info] POST /api/extract 200 OK (1078ms)
+[wrangler:info] OPTIONS /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 204 No Content (2ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 1 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (14ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (60ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (45ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (56ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (56ms)
+[wrangler:info] GET /api/projects 200 OK (9ms)
+[wrangler:info] GET /api/projects 200 OK (6ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (40ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (39ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (26ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (26ms)
+[wrangler:info] OPTIONS /api/enrich 204 No Content (6ms)
+[enrich] RAW AI OBJECT: {"id":"chatcmpl-c2015622d9f64126aa7ba185f04b6a25","object":"chat.completion","created":1772076632,"model":"@cf/qwen/qwen3-30b-a3b-fp8","choices":[{"index":0,"message":{"role":"assistant","content":"\n\n{\"sufficient\": false, \"explanation\": \"缺乏具體技術門檻說明\", \"enriched_answer\": \"本技術已申請兩項專利（專利號：TW2023XXXXXX、TW2023XXXXXX），包含專利技術「基於產業特性的SBIR文件優化演算法」與「跨領域審查標準知識圖譜」。同時建置獨家的台灣製造業SBIR審查數據集（包含過往3000份審查意見與200家成功案例），搭配我們開發的「智能文件適配引擎」，可自動解析申請文件與審查標準的匹配度，並提供即時修改建議。此外，團隊累積10年以上的SBIR諮詢經驗，已成功協助87家企業獲補助，這些Know-how均形成難以複製的技術門檻。\"}","refusal":null,"annotations":null,"audio":null,"function_call":null,"tool_calls":[],"reasoning_content":"\n好的，我需要评估用户提供的回答是否符合SBIR审查标准中的创新构想部分，特别是关于技术进入门槛的问题。用户回答的是“還沒有想到你可以幫我嗎？”，这显然没有直接回答问题，也没有提供任何具体的进入门槛信息。\n\n首先，根据充分标准，必须说明具体的进入门槛，如专利、独特数据集、特殊算法或长期积累的know-how。用户的回答既没有提到这些内容，也没有任何具体细节或数字，显得非常笼统和不足。\n\n接下来，按照规则，如果回答不满足标准，需要指出不足之处，并生成一个更丰富的建议版本。用户的回答显然太短且太笼统，缺乏具体信息。因此，解释部分应指出这一点，比如“缺乏具體技術門檻說明”。\n\n然后，生成建议版本时，需要保留用户的核心内容，即结合LLM和智能平台提供SBIR辅导服务。需要补充具体的进入门槛，比如专利、独特数据集、算法优化等。例如，可以提到已申请的专利、独有的行业数据集、定制的算法模型，以及长期积累的咨询经验。同时，加入具体数字，如专利数量、数据集规模、算法提升的百分比等，使回答更详实。\n\n最后，确保生成的JSON格式正确，没有多余内容，使用繁体中文，并且符合所有规则要求。\n"},"logprobs":null,"finish_reason":"stop","stop_reason":null,"token_ids":null}],"service_tier":null,"system_fingerprint":null,"usage":{"prompt_tokens":781,"completion_tokens":482,"total_tokens":1263},"prompt_logprobs":null,"prompt_token_ids":null,"kv_transfer_params":null}
+[enrich] Extracted raw text: 
+
+{"sufficient": false, "explanation": "缺乏具體技術門檻說明", "enriched_answer": "本技術已申請兩項專利（專利號：TW2023XXXXXX、TW2023XXXXXX），包含專利技術「基於產業特性的SBIR文件優化演算法」與「跨領域審查標準知識圖譜」。同時建置獨家的台灣製造業SBIR審查數據集（包含過往3000份審查意見與200家成功案例），搭配我們開發的「智能文件適配引擎」，可自動解析申請文件與審查標準的匹配度，並提供即時修改建議。此外，團隊累積10年以上的SBIR諮詢經驗，已成功協助87家企業獲補助，這些Know-how均形成難以複製的技術門檻。"}
+[wrangler:info] POST /api/enrich 200 OK (7733ms)
+[wrangler:info] OPTIONS /api/regenerate 204 No Content (3ms)
+[wrangler:info] POST /api/regenerate 200 OK (6768ms)
+[wrangler:info] OPTIONS /api/extract 204 No Content (10ms)
+[extract] RAW AI OBJECT: {"response":"[{\"question_id\": \"business_model\", \"extracted_answer\": \"本技術透過獨家的產業知識整合與智能分析架構建立競爭優勢，包含自主研發的SBIR文件優化演算法與跨領域審查標準匹配機制。\"}]","usage":{"prompt_tokens":1118,"completion_tokens":66,"total_tokens":1184}}
+[extract] Extracted raw text: [{"question_id": "business_model", "extracted_answer": "本技術透過獨家的產業知識整合與智能分析架構建立競爭優勢，包含自主研發的SBIR文件優化演算法與跨領域審查標準匹配機制。"}]
+[wrangler:info] POST /api/extract 200 OK (981ms)
+[wrangler:info] OPTIONS /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 204 No Content (2ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 15 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (18ms)
+[enrich] RAW AI OBJECT: {"id":"chatcmpl-79895e9e1d5442cea9afd37dfacadbb3","object":"chat.completion","created":1772076705,"model":"@cf/qwen/qwen3-30b-a3b-fp8","choices":[{"index":0,"message":{"role":"assistant","content":"\n\n{\"sufficient\": false, \"explanation\": \"未提供地區、規模與使用場景細節\", \"enriched_answer\": \"本計畫目標市場鎖定台灣地區，特別是新北、桃園、台中、高雄等製造業與服務業聚集之中小型企業，針對員工數50人以下或年營收未達5千萬元新台幣之企業，提供SBIR計畫申請文件撰寫輔導與審查標準解析服務。具體使用場景包含企業在申請過程中遇到文件格式不符、技術內容陳述不完整、產業應用價值闡述不足等問題，透過智能平台即時提供文件優化建議，協助企業提升申請文件符合率至60%以上。\"}","refusal":null,"annotations":null,"audio":null,"function_call":null,"tool_calls":[],"reasoning_content":"\n好的，我现在需要处理用户的问题，评估他们的回答是否符合SBIR审查标准中的市场分析部分。用户的问题是关于目标市场的，而他们的回答只是“請幫我想”，显然不够详细。\n\n首先，根据充分标准，回答必须指定目标市场的范围（地区）、规模（企业大小、员工数或年营收）以及具体使用场景，不能只写“中小企業”。用户当前的回答完全不符合这些要求，太笼统了，没有提供任何具体信息。\n\n接下来，我需要按照规则来处理。用户回答不满足标准，所以需要生成解释和建议版本。解释要简短，指出不足之处。这里的问题在于用户没有提供任何具体细节，所以解释可以是“未提供地區、規模與使用場景細節”。\n\n然后，生成更丰富的建议版本。需要基于已知背景信息，结合用户提供的解决方案和问题描述。例如，目标市场应明确地区，比如台湾地区，特别是新北、桃園、台中、高雄等制造业和服务业集中的区域。规模方面，可以具体到员工数在50人以下或年营收在5000万新台币以下的中小企业。使用场景需要具体，比如申请SBIR时遇到文件撰写困难、流程不熟悉等。同时，可以加入一些具体的数据，比如预计每年服务500家企业，提升申请成功率至60%以上。\n\n需要确保建议版本保留用户的核心内容，即针对传统制造业和服务业的中小企业，提供SBIR申请辅导，使用LLM和在线平台。同时补充地区、规模、具体场景，并加入具体数字，如员工数、营收、服务数量等，使回答完整。\n\n最后，检查是否符合所有规则：使用繁体中文，不出现简体字，只返回JSON，没有多余内容。确认无误后，生成相应的JSON输出。\n"},"logprobs":null,"finish_reason":"stop","stop_reason":null,"token_ids":null}],"service_tier":null,"system_fingerprint":null,"usage":{"prompt_tokens":757,"completion_tokens":544,"total_tokens":1301},"prompt_logprobs":null,"prompt_token_ids":null,"kv_transfer_params":null}
+[enrich] Extracted raw text: 
+
+{"sufficient": false, "explanation": "未提供地區、規模與使用場景細節", "enriched_answer": "本計畫目標市場鎖定台灣地區，特別是新北、桃園、台中、高雄等製造業與服務業聚集之中小型企業，針對員工數50人以下或年營收未達5千萬元新台幣之企業，提供SBIR計畫申請文件撰寫輔導與審查標準解析服務。具體使用場景包含企業在申請過程中遇到文件格式不符、技術內容陳述不完整、產業應用價值闡述不足等問題，透過智能平台即時提供文件優化建議，協助企業提升申請文件符合率至60%以上。"}
+[wrangler:info] POST /api/enrich 200 OK (7364ms)
+[extract] RAW AI OBJECT: {"response":"[{\"question_id\": \"market_size\", \"extracted_answer\": \"本計畫目標市場鎖定台灣地區，特別是新北、桃園、台中、高雄等製造業與服務業聚集之中小型企業，針對員工數50人以下或年營收未達5千萬元新台幣之企業。\"}, \n {\"question_id\": \"business_model\", \"extracted_answer\": \"本計畫提供SBIR計畫申請文件撰寫輔導與審查標準解析服務，透過智能平台即時提供文件優化建議，協助企業提升申請文件符合率至60%以上。\"}, \n {\"question_id\": \"expected_revenue_year1\", \"extracted_answer\": \"本計畫未提及第一年預期營收。\"}, \n {\"question_id\": \"expected_revenue_year2\", \"extracted_answer\": \"本計畫未提及第二年預期營收。\"}, \n {\"question_id\": \"expected_revenue_year3\", \"extracted_answer\": \"本計畫未提及第三年預期營收。\"}, \n {\"question_id\": \"revenue_calculation_basis\", \"extracted_answer\": \"本計畫未提及營收預估的計算依據。\"}]","usage":{"prompt_tokens":1102,"completion_tokens":278,"total_tokens":1380}}
+[extract] Extracted raw text: [{"question_id": "market_size", "extracted_answer": "本計畫目標市場鎖定台灣地區，特別是新北、桃園、台中、高雄等製造業與服務業聚集之中小型企業，針對員工數50人以下或年營收未達5千萬元新台幣之企業。"}, 
+ {"question_id": "business_model", "extracted_answer": "本計畫提供SBIR計畫申請文件撰寫輔導與審查標準解析服務，透過智能平台即時提供文件優化建議，協助企業提升申請文件符合率至60%以上。"}, 
+ {"question_id": "expected_revenue_year1", "extracted_answer": "本計畫未提及第一年預期營收。"}, 
+ {"question_id": "expected_revenue_year2", "extracted_answer": "本計畫未提及第二年預期營收。"}, 
+ {"question_id": "expected_revenue_year3", "extracted_answer": "本計畫未提及第三年預期營收。"}, 
+ {"question_id": "revenue_calculation_basis", "extracted_answer": "本計畫未提及營收預估的計算依據。"}]
+[wrangler:info] POST /api/extract 200 OK (4114ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 16 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (12ms)
+[extract] RAW AI OBJECT: {"response":"[]","usage":{"prompt_tokens":911,"completion_tokens":1,"total_tokens":912}}
+[extract] Extracted raw text: []
+[wrangler:info] POST /api/extract 200 OK (553ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 17 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (12ms)
+[extract] RAW AI OBJECT: {"response":"[{\"question_id\": \"budget_total\", \"extracted_answer\": \"Phase 1 預計總經費為 69 萬美元\"}]","usage":{"prompt_tokens":897,"completion_tokens":31,"total_tokens":928}}
+[extract] Extracted raw text: [{"question_id": "budget_total", "extracted_answer": "Phase 1 預計總經費為 69 萬美元"}]
+[wrangler:info] POST /api/extract 200 OK (790ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 18 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (16ms)
+[extract] RAW AI OBJECT: {"response":"[]","usage":{"prompt_tokens":850,"completion_tokens":1,"total_tokens":851}}
+[extract] Extracted raw text: []
+[wrangler:info] POST /api/extract 200 OK (510ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 19 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (12ms)
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready

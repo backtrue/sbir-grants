@@ -1,0 +1,290 @@
+
+> dev
+> wrangler dev
+
+
+ ⛅️ wrangler 4.67.0 (update available 4.69.0)
+─────────────────────────────────────────────
+Using vars defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                          Resource                  Mode
+env.DB (sbir-saas-db)                            D1 Database               local
+env.VECTORIZE (sbir_chunks)                      Vectorize Index           remote
+env.sbir_saas_bucket (sbir-saas-bucket)          R2 Bucket                 local
+env.AI                                           AI                        remote
+env.GOOGLE_CLIENT_ID ("(hidden)")                Environment Variable      local
+env.GOOGLE_CLIENT_SECRET ("(hidden)")            Environment Variable      local
+env.JWT_SECRET ("(hidden)")                      Environment Variable      local
+env.FRONTEND_URL ("(hidden)")                    Environment Variable      local
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Starting local server...
+[wrangler:warn] The latest compatibility date supported by the installed Cloudflare Workers Runtime is "2026-02-19",
+but you've requested "2026-02-23". Falling back to "2026-02-19"...
+Features enabled by your requested compatibility date may not be available.
+Upgrade to `wrangler@4.69.0` to remove this warning.
+[wrangler:info] Ready on http://localhost:8787
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[COMPANY VERIFY DEBUG] projectId: 1976f3d4-989c-468e-8554-29afd6d52a74
+[COMPANY VERIFY DEBUG] answersRes.results length: 30
+[COMPANY VERIFY DEBUG] wizardAnswers keys: [
+  'budget_breakdown',
+  'budget_total',
+  'business_model',
+  'capital',
+  'company_name',
+  'company_size',
+  'competitive_advantage',
+  'current_solutions',
+  'current_trl',
+  'customer_pain_score',
+  'customer_validation',
+  'expected_revenue_year1',
+  'expected_revenue_year2',
+  'expected_revenue_year3',
+  'industry',
+  'innovation_points',
+  'key_risks',
+  'market_size',
+  'problem_description',
+  'problem_severity',
+  'project_leader',
+  'quantified_benefits',
+  'revenue_calculation_basis',
+  'solution_description',
+  'target_market',
+  'target_trl',
+  'team_composition',
+  'team_experience',
+  'technical_barriers',
+  'wizardAnswers'
+]
+[COMPANY VERIFY DEBUG] company_name: 煜言顧問
+[wrangler:info] POST /api/ai/project/1976f3d4-989c-468e-8554-29afd6d52a74/company-verify 200 OK (621ms)
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[COMPANY VERIFY DEBUG] projectId: 1976f3d4-989c-468e-8554-29afd6d52a74
+[COMPANY VERIFY DEBUG] answersRes.results length: 30
+[COMPANY VERIFY DEBUG] wizardAnswers keys: [
+  'budget_breakdown',
+  'budget_total',
+  'business_model',
+  'capital',
+  'company_name',
+  'company_size',
+  'competitive_advantage',
+  'current_solutions',
+  'current_trl',
+  'customer_pain_score',
+  'customer_validation',
+  'expected_revenue_year1',
+  'expected_revenue_year2',
+  'expected_revenue_year3',
+  'industry',
+  'innovation_points',
+  'key_risks',
+  'market_size',
+  'problem_description',
+  'problem_severity',
+  'project_leader',
+  'quantified_benefits',
+  'revenue_calculation_basis',
+  'solution_description',
+  'target_market',
+  'target_trl',
+  'team_composition',
+  'team_experience',
+  'technical_barriers',
+  'wizardAnswers'
+]
+[COMPANY VERIFY DEBUG] company_name: 煜言顧問
+[COMPANY VERIFY] Live g0v fetch succeeded (no cache)
+[wrangler:info] POST /api/ai/project/1976f3d4-989c-468e-8554-29afd6d52a74/company-verify 200 OK (550ms)
+[wrangler:info] GET /api/projects 200 OK (15ms)
+[wrangler:info] GET /api/projects 200 OK (17ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (34ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (25ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (27ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (17ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (14ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (12ms)
+[COMPANY VERIFY DEBUG] projectId: 1976f3d4-989c-468e-8554-29afd6d52a74
+[COMPANY VERIFY DEBUG] answersRes.results length: 30
+[COMPANY VERIFY DEBUG] wizardAnswers keys: [
+  'budget_breakdown',
+  'budget_total',
+  'business_model',
+  'capital',
+  'company_name',
+  'company_size',
+  'competitive_advantage',
+  'current_solutions',
+  'current_trl',
+  'customer_pain_score',
+  'customer_validation',
+  'expected_revenue_year1',
+  'expected_revenue_year2',
+  'expected_revenue_year3',
+  'industry',
+  'innovation_points',
+  'key_risks',
+  'market_size',
+  'problem_description',
+  'problem_severity',
+  'project_leader',
+  'quantified_benefits',
+  'revenue_calculation_basis',
+  'solution_description',
+  'target_market',
+  'target_trl',
+  'team_composition',
+  'team_experience',
+  'technical_barriers',
+  'wizardAnswers'
+]
+[COMPANY VERIFY DEBUG] company_name: 煜言顧問
+[COMPANY VERIFY] Live g0v fetch succeeded (no cache)
+[wrangler:info] POST /api/ai/project/1976f3d4-989c-468e-8554-29afd6d52a74/company-verify 200 OK (482ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (15ms)
+[wrangler:info] OPTIONS /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 204 No Content (2ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 30 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (20ms)
+[wrangler:info] POST /api/ai/project/1976f3d4-989c-468e-8554-29afd6d52a74/quality-check 200 OK (3952ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (7ms)
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] User: a60e7506-6907-4910-b79d-a66100088125
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Existing data found, parsing body...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Saving 30 answers to relational table...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Successfully saved answers to project_answers table.
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] Executing DB update for project metadata...
+[PUT /projects/1976f3d4-989c-468e-8554-29afd6d52a74] DB metadata update successful
+[wrangler:info] PUT /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (14ms)
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (31ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (36ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (38ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (23ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (36ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (36ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (37ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (40ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (41ms)
+[wrangler:info] POST /api/ai/project/1976f3d4-989c-468e-8554-29afd6d52a74/pitch-deck 200 OK (27ms)
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[wrangler:info] POST /api/ai/project/1976f3d4-989c-468e-8554-29afd6d52a74/pitch-deck 200 OK (25ms)
+[wrangler:info] POST /api/ai/project/1976f3d4-989c-468e-8554-29afd6d52a74/pitch-deck 200 OK (32ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (43ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (51ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (29ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (5ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (13ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (15ms)
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+Using vars defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                             Resource                  Mode
+env.DOC_QUEUE (sbir-doc-processing)                 Queue                     local
+env.DB (sbir-saas-db)                               D1 Database               local
+env.VECTORIZE (sbir_chunks)                         Vectorize Index           remote
+env.sbir_saas_bucket (sbir-saas-bucket)             R2 Bucket                 local
+env.AI                                              AI                        remote
+env.GOOGLE_CLIENT_ID ("(hidden)")                   Environment Variable      local
+env.GOOGLE_CLIENT_SECRET ("(hidden)")               Environment Variable      local
+env.JWT_SECRET ("(hidden)")                         Environment Variable      local
+env.FRONTEND_URL ("(hidden)")                       Environment Variable      local
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74/status 200 OK (24ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (45ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (49ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (49ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74/status 200 OK (19ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (14ms)
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[projects/:id] Request for project 1976f3d4-989c-468e-8554-29afd6d52a74 by user a60e7506-6907-4910-b79d-a66100088125
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74/status 200 OK (29ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (26ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (32ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (38ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74 200 OK (37ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74/status 200 OK (9ms)
+[wrangler:info] GET /api/projects/1976f3d4-989c-468e-8554-29afd6d52a74/sections 200 OK (32ms)
+[wrangler:info] GET /api/storage/project/1976f3d4-989c-468e-8554-29afd6d52a74/status 200 OK (4ms)
+[wrangler:info] GET /api/projects 401 Unauthorized (24ms)
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mFailed to fetch auth token: 400 Bad Request[0m
+
+
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mIn a non-interactive environment, it's necessary to set a CLOUDFLARE_API_TOKEN environment variable for wrangler to work. Please go to https://developers.cloudflare.com/fundamentals/api/get-started/create-token/ for instructions on how to create an api token, and assign its value to CLOUDFLARE_API_TOKEN.[0m
+
+
+🪵  Logs were written to "/Users/backtrue/Library/Preferences/.wrangler/logs/wrangler-2026-03-01_04-45-25_922.log"

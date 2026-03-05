@@ -1,0 +1,84 @@
+{
+  "industry": "機械",
+  "last_updated": "2024-12-31",
+  "sources": [
+    {
+      "name": "工研院 IEK",
+      "year": 2024,
+      "data": {
+        "market_size": {
+          "value": 1200,
+          "unit": "億台幣",
+          "description": "台灣機械產業總產值"
+        },
+        "growth_rate": {
+          "value": 5.2,
+          "unit": "%",
+          "period": "2024-2030 CAGR",
+          "description": "年複合成長率"
+        },
+        "export_value": {
+          "value": 35,
+          "unit": "億美元",
+          "description": "工具機出口值"
+        },
+        "global_ranking": {
+          "value": 5,
+          "description": "全球工具機出口排名"
+        }
+      },
+      "url": "https://iek.itri.org.tw/",
+      "notes": "數據為示範用途，實際使用請查詢最新報告"
+    },
+    {
+      "name": "經濟部統計處",
+      "year": 2024,
+      "data": {
+        "production_value": {
+          "value": 1150,
+          "unit": "億台幣",
+          "description": "機械設備製造業產值"
+        },
+        "employment": {
+          "value": 85000,
+          "unit": "人",
+          "description": "機械產業就業人數"
+        },
+        "companies": {
+          "value": 8500,
+          "unit": "家",
+          "description": "機械產業公司數"
+        }
+      },
+      "url": "https://www.moea.gov.tw/Mns/dos/"
+    }
+  ],
+  "key_segments": {
+    "工具機": {
+      "market_share": "30%",
+      "value": 360,
+      "unit": "億台幣"
+    },
+    "自動化設備": {
+      "market_share": "25%",
+      "value": 300,
+      "unit": "億台幣"
+    },
+    "精密機械": {
+      "market_share": "20%",
+      "value": 240,
+      "unit": "億台幣"
+    },
+    "其他": {
+      "market_share": "25%",
+      "value": 300,
+      "unit": "億台幣"
+    }
+  },
+  "trends": [
+    "智慧製造",
+    "AI 應用",
+    "節能減碳",
+    "精密加工"
+  ]
+}

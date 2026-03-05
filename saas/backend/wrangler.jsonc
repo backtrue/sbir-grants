@@ -1,0 +1,82 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "backend",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-02-23",
+	"routes": [
+		{
+			"pattern": "sbir-api.thinkwithblack.com/*",
+			"custom_domain": true
+		}
+	],
+	"r2_buckets": [
+		{
+			"bucket_name": "sbir-saas-bucket",
+			"binding": "sbir_saas_bucket"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "sbir-saas-db",
+			"database_id": "7234230c-321c-4ccb-8864-8c945c4025ac"
+		}
+	],
+	"ai": {
+		"binding": "AI"
+	},
+	"vectorize": [
+		{
+			"binding": "VECTORIZE",
+			"index_name": "sbir_chunks",
+			"remote": true
+		}
+	],
+	"queues": {
+		"producers": [
+			{
+				"queue": "sbir-doc-processing",
+				"binding": "DOC_QUEUE"
+			}
+		],
+		"consumers": [
+			{
+				"queue": "sbir-doc-processing",
+				"max_batch_size": 1,
+				"max_batch_timeout": 30
+			}
+		]
+	},
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"vars": {
+		"FRONTEND_URL": "https://sbir.thinkwithblack.com"
+	},
+	// "kv_namespaces": [
+	//   {
+	//     "binding": "MY_KV_NAMESPACE",
+	//     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+	//   }
+	// ],
+	// "r2_buckets": [
+	//   {
+	//     "binding": "MY_BUCKET",
+	//     "bucket_name": "my-bucket"
+	//   }
+	// ],
+	// "d1_databases": [
+	//   {
+	//     "binding": "MY_DB",
+	//     "database_name": "my-database",
+	//     "database_id": ""
+	//   }
+	// ],
+	// "ai": {
+	//   "binding": "AI"
+	// },
+	// "observability": {
+	//   "enabled": true,
+	//   "head_sampling_rate": 1
+	// }
+}

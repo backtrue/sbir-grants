@@ -1,0 +1,38 @@
+
+> dev
+> wrangler dev
+
+
+ ⛅️ wrangler 4.67.0 (update available 4.68.0)
+─────────────────────────────────────────────
+Using vars defined in .dev.vars
+Your Worker has access to the following bindings:
+Binding                                          Resource                  Mode
+env.DB (sbir-saas-db)                            D1 Database               local
+env.VECTORIZE (sbir_chunks)                      Vectorize Index           remote
+env.sbir_saas_bucket (sbir-saas-bucket)          R2 Bucket                 local
+env.AI                                           AI                        remote
+env.GOOGLE_CLIENT_ID ("(hidden)")                Environment Variable      local
+env.GOOGLE_CLIENT_SECRET ("(hidden)")            Environment Variable      local
+env.JWT_SECRET ("(hidden)")                      Environment Variable      local
+env.FRONTEND_URL ("(hidden)")                    Environment Variable      local
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Starting local server...
+[wrangler:warn] The latest compatibility date supported by the installed Cloudflare Workers Runtime is "2026-02-19",
+but you've requested "2026-02-23". Falling back to "2026-02-19"...
+Features enabled by your requested compatibility date may not be available.
+Upgrade to `wrangler@4.68.0` to remove this warning.
+[wrangler:info] Ready on http://localhost:8788
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mAI bindings always access remote resources, and so may incur usage charges even in local dev. To suppress this warning, set `remote: true` for the binding definition in your configuration file.[0m
+
+
+⎔ Reloading local server...
+⎔ Local server updated and ready
