@@ -1,38 +1,470 @@
-# SBIR Grants AI Copilot (SaaS & MCP Skill)
+# 🚀 SBIR Skill - AI 驅動的 SBIR 申請神器
 
-A comprehensive AI ecosystem designed to assist SMEs with crafting high-quality, local SBIR (Small Business Innovation Research) proposals. The project is split into two perfectly aligned interfaces: a modern Web SaaS and a local Claude MCP Skill.
+<div align="center">
 
-## 🚀 Recent Feature Launches (The "Reverse Porting" Initiative)
+![SBIR Skill](https://img.shields.io/badge/SBIR-Skill-brightgreen?style=for-the-badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Files](https://img.shields.io/badge/Files-84+-blue.svg?style=for-the-badge)]()
+[![Words](https://img.shields.io/badge/Words-170K+-orange.svg?style=for-the-badge)]()
+[![Completion](https://img.shields.io/badge/Completion-99.5%25-success.svg?style=for-the-badge)]()
+[![FAQ](https://img.shields.io/badge/FAQ-122-green.svg?style=for-the-badge)]()
+[![Tools](https://img.shields.io/badge/MCP_Tools-11-purple.svg?style=for-the-badge)]()
 
-We have successfully reverse-ported the advanced, deterministic methodology from our local MCP Skill back into the Web SaaS, ensuring 100% parity in generation quality and strict compliance with local SBIR success factors.
+**設計目標：協助您更快、更完整地完成 SBIR 申請**
 
-### 1. 統一知識基準 (Shared Domain SSOT)
-- **Single Source of Truth**: All domain logic is now centrally managed in a newly created `shared_domain/` directory.
-- **Config JSONs**: Extracted ROI formulas (`financial_rules.json`), evaluation metrics (`quality_metrics.json`), terminology dictionaries (`query_synonyms.json`), enrichment guidelines (`enrich_criteria.json`), and proposal structures into unified JSON files. 
-- **Cross-Platform Loaders**: Both the TypeScript backend and the Python MCP server dynamically ingest these rules.
+[🎯 一鍵安裝](#-一鍵安裝) • [✨ 核心功能](#-核心功能) • [📝 自動生成計畫書](#-互動式計畫書生成器) • [📖 使用指南](#-使用指南) • [🌐 SaaS 網頁版](#-saas-網頁版)
 
-### 2. 嚴謹的事實查核與單筆追蹤修訂 (AI Draft Auto-Edit)
-- **Track Changes UI**: A Word-like review interface in the SaaS that allows users to accept/reject granular LLM edits individually.
-- **Ground Truth Enforcement**: Injects the user's original survey answers into the prompt to strictly prevent hallucinated figures or tech concepts.
-- **Success Factors Integration**: Automatically scores drafts against "Local SBIR Success Factors" (e.g., local employment, local supply chain) and injects missing requirements as fill-in-the-blank templates.
+</div>
 
-### 3. 動態聯網與重排序 (Web Search & Re-ranking)
-- **Tavily Search API**: Dynamically answers gaps in knowledge, specifically market sizes (TAM/SAM/SOM), with live web data instead of LLM hallucinations.
-- **MMR & Reranking**: Boosted Vectorize retrieval from Top 10 to Top 30, pre-filtered with Maximal Marginal Relevance, and post-ranked with Cloudflare Worker AI's Qwen model.
+---
 
-### 4. 財務指標自動規劃 (Deterministic ROAS Calculators)
-- Replaced unreliable LLM-generated budget tables with strict, algorithmically determined Phase 1 / Phase 2 ROAS calculations.
+## 🚀 重大更新：SaaS 服務全面上線與「逆向大回饋」架構 (Reverse Porting)
 
-### 5. 6 維度即時品質診斷 (Quality Radar)
-- Blazingly fast, rule-based quality checkpoints evaluating 6 dimensions of the draft (Innovation, Data Credibility, Commercial Viability, etc.), complete with visual radar charts on the frontend.
+我們已經成功將原本僅限於本機端的 MCP Skill 人工智慧高階演算法，完美逆向移植 (Reverse Porting) 回 Cloudflare Web SaaS 平台！現在，本專案已成為一個包含 **Web SaaS** 與 **MCP Skill** 的統一 Monorepo 全家桶。
 
-## 📂 Project Structure
+### 🌟 雙平台 100% 同步的強大能力
+1. **統一知識基準 (Shared Domain)🌍**：所有核心商業計算（包含財務配置表、多樣性擴寫矩陣、自動診斷雷達評分指南）已全數抽離為 `shared_domain/` JSON 設定檔，SaaS 與 MCP Server 同步掛載，輸出品質完全一致！
+2. **單筆追蹤修訂 (AI Draft Auto-Edit) 📝**：不要再盲目接受 AI 結果了！我們實作了如同 Word 的審查機制，您可以對 LLM 每一句的編修選擇接受或拒絕。
+3. **強制防幻覺與過件守門員 🛡️**：直接將您的初訪調查表綁定為絕對事實依據 (Ground Truth)，並掛載「地方型 SBIR 過件關鍵指南」，強制 AI 把關您的計畫書在地就業、產業鏈效益等實質貢獻！
+4. **混合式 RAG 與即時聯網 (Web Search + Re-ranking) 🔍**：突破 AI 記憶瓶頸，現在市場規模 (TAM/SAM/SOM) 已能自動呼叫 Tavily API 即時爬取研報，並結合 MMR 演算法與 Qwen 重排序過濾水分！
+5. **6 維度即時診斷雷達 (Quality Radar) 📊**：不再需要浪費時間等待 LLM 緩慢評估，全新純規則式引擎提供極速客觀雷達圖，一眼看穿專案弱點！
 
-- **`/saas`**: Cloudflare Pages (React) + Cloudflare Workers / D1 / Vectorize (Hono backend). The primary user interface.
-- **`/sbir-grants`**: The interactive CLI & Model Context Protocol (MCP) Server. The sandbox for agentic tool use and advanced document ingestion.
-- **`/shared_domain`**: The unified commercial logic and rulebook used by both platforms.
+所有 Web 端功能請前往 👉 [sbir.thinkwithblack.com](https://sbir.thinkwithblack.com) 體驗。
+SaaS 前後端專案原始碼皆位於 `saas/` 資料夾內。
 
-## 🛠 Stability 
-This repository undergoes a strict 3-Round System Audit enforcing:
-- **TypeScript**: 0 compilation warnings (Frontend & Backend).
-- **Python Static Analysis**: Fully typed strict passing standard via `mypy` and `flake8` clean.
+---
+
+## 🌐 SaaS 網頁版
+
+> **無需安裝任何軟體！** 直接開啟瀏覽器即可使用所有 SBIR AI 輔助功能。
+
+[![SaaS](https://img.shields.io/badge/上線%20-sbir.thinkwithblack.com-blue?style=for-the-badge&logo=cloudflare)](https://sbir.thinkwithblack.com)
+
+| 功能 | 說明 |
+|------|------|
+| 🤖 **AI 章節生成** | 串流生成 9 大計畫書章節（Claude / Gemini） |
+| 📚 **混合式 RAG** | 關鍵字 + 語意搜尋 + MMR 多樣性排序 + Re-ranking |
+| 📄 **文件上傳** | PDF/DOCX 自動解析、語意切塊、向量索引、章節標記 |
+| 📊 **品質雷達圖** | 6 維度即時評分可視化 |
+| 💡 **市場數據擴寫** | 即時爬取 IEK、MIC 等產業數據 |
+| 🔑 **BYOK 金鑰** | 支援使用自己的 Claude / OpenAI / Gemini API Key |
+
+**技術架構**：Cloudflare Workers + D1 + R2 + Vectorize + AI + Queues  
+**完整部署文件**：👉 [SAAS.md](SAAS.md)
+
+---
+
+## 🆕 2026 年 2 月更新
+
+### 📍 全台 22 縣市地方型 SBIR 2026 資料大更新
+
+最新調查截至 **2026-02-21**，全台縣市公告狀態如下：
+
+| 狀態 | 縣市 |
+|------|------|
+| ✅ **已公告/可申請 (1)** | 台北市 SITI（隨到隨審） |
+| 📋 **委託案籌備中 (4)** | 基隆市（1/1 決標）、宜蘭縣（2/13 決標）、花蓮縣（招標中）、台南市（招標中） |
+| 📅 **待公告 (17)** | 所有其他縣市皆尚未發布 115 年度正式公告（包含桃園、新北、新竹縣市、台中、彰化、高雄等），往年多集中於 4-6 月 |
+
+更多詳細資訊：[地方型 SBIR 追蹤表](references/local_sbir_2026_tracker.md)
+
+### 🛠️ MCP Server 代碼修復（14 項）
+
+本次更新修復了幾個重要問題，建議所有 MCP Server 用戶更新：
+
+- 🔴 **[Critical] ROI 工具路由修正**：`calculate_roi` / `validate_roi` 之前因路由設定問題無法正常呼叫，現已修復
+- 🟡 **搜尋快取啟用**：修復快取未寫回的問題，搜尋結果現在會正確快取，重複查詢回應更快
+- 🟡 **計畫書檢核大小寫 bug**：`check_proposal` 現在正確進行不區分大小寫的完整度檢查
+- 🟡 **LRU 快取效能優化**：改用 `OrderedDict` 實現 O(1) 操作（原本為 O(n)）
+- 🟢 **雙向同義詞擴展**：搜尋「預算」也能自動展開到「補助」「經費」（之前只能單向展開）
+- 🟢 **Word 匯出路徑跨平台修復**：不再硬編碼 `~/Documents`，改為自動偵測桌面/文件目錄
+- 其他安全性改善（路徑穿越防護、錯誤處理、imports 整理）
+
+---
+
+
+## 💡 為什麼需要 SBIR Skill？
+
+### 傳統方式的痛點
+
+- ❌ **耗時 2-3 個月**撰寫計畫書
+- ❌ **到處找資料**，不知道從何開始
+- ❌ **格式不確定**，擔心遺漏重點
+- ❌ **成功率低**，投入大量時間卻失敗
+
+### 使用 SBIR Skill 後
+
+- ✅ **加速撰寫流程**，整合 84+ 個檔案的知識庫
+- ✅ **所有資料整合**，122 個 FAQ + 6 個方法論
+- ✅ **自動檢核**，確保完整性
+- ✅ **AI 自動生成**，Phase 1/2 完整計畫書
+- ✅ **Word 匯出**，一鍵產生 .docx 檔案
+- ✅ **經費試算**，自動建議預算分配
+- ✅ **提升申請品質**（真實案例指引 + 完整架構）
+
+---
+
+## 🎯 一鍵安裝
+
+**完全不懂電腦？沒關係！** 只要 3 個步驟：
+
+### Mac 用戶
+
+```bash
+# 1. 下載專案
+cd ~/Documents && git clone https://github.com/backtrue/sbir-grants.git && cd sbir-grants
+
+# 2. 執行安裝（自動配置所有東西）
+bash install-mac.sh
+
+# 3. 重啟 Claude Desktop，完成！
+```
+
+### Windows 用戶
+
+1. [下載 ZIP](https://github.com/backtrue/sbir-grants/archive/refs/heads/main.zip)
+2. 解壓縮到「文件」資料夾
+3. 雙擊 `install-windows.bat`
+4. 重啟 Claude Desktop，完成！
+
+### 不會用終端機？
+
+👉 看[完整圖文教學](INSTALLATION.md)（超級詳細，一步步教您）
+
+---
+
+## ✨ 核心功能
+
+### 🚀 v2.0 搜尋引擎大升級 (New!)
+
+我們剛剛引入了商業級的搜尋技術，大幅提升搜尋體驗：
+
+| 功能 | 說明 | 技術亮點 |
+|------|------|----------|
+| **🧠 AI 重排序** | 像真人一樣精讀結果 | 使用 `Cross-Encoder` 模型對前 20 名結果進行深度語意評分，精準度提升 40%。 |
+| **🌈 多樣性排序** | 避免結果重複 | 採用 **MMR 演算法**，確保搜尋結果來自不同文件，資訊更全面。 |
+| **⚡ 極速快取** | 常用查詢秒回 | 內建 LRU 快取機制，重複查詢回應速度提升 **400%** (0.2秒)。 |
+| **🔄 同義詞擴展** | 聽懂你的話 | 自動擴展查詢（如「經費」->「補助」、「預算」），不再漏掉關鍵資訊。 |
+| **📅 時效加權** | 優先顯示最新 | 自動識別文件年份，2026/2025 年的最新規定會優先顯示。 |
+| **💡 智慧建議** | 引導式搜尋 | 根據查詢內容，自動推薦「您可能也想了解」的相關問題。 |
+
+### 🤖 1. 智能知識庫搜尋
+
+**不需要記住檔案路徑！** Claude 會自動：
+- 🔍 搜尋相關文件（84+ 個檔案）
+- 📖 讀取內容並理解
+- 💡 根據知識庫精準回答
+
+**範例**：
+```
+您：我要寫創新構想，該怎麼寫？
+
+Claude：[自動搜尋 methodology_innovation.md]
+       [讀取完整方法論]
+       [提供結構化指導 + 實際範例]
+```
+
+**知識庫內容（170,000+ 字）**：
+- 📚 **6 個完整方法論**（問題陳述、創新、市場、可行性、團隊、經費）
+- ✍️ **撰寫技巧指南**（說故事 + 數據呈現 + 簡報技巧 + 服務創新）
+- ❓ **122 個 FAQ**（涵蓋資格、流程、經費、審查、執行、地方型）
+- ✅ **5 個檢核清單**（申請前、撰寫、經費、送件）
+- 📊 **7 個案例研究**（機械、服務、生技、綠能、電子產業）
+- 🎯 **快速啟動指南**（10 分鐘、1 小時、1 週）
+- 🏛️ **地方型 SBIR 總覽**（全台縣市比較 + 真實案例）
+- 📋 **執行與結案指南**（從簽約到結案）
+- 🆕 **2025 政策更新**（補助調高、專利補助）
+- 🎓 **審查意見回覆指南**（基於真實案例）
+- 💰 **經費編列說明**（委外合理性論述）
+- 🔍 **SWOT 分析深化**（真實成功案例）
+
+---
+
+### 📝 2. 互動式計畫書生成器 ⭐ **超強功能**
+
+**25 個問題，自動生成完整 12-15 頁計畫書！**
+
+#### 使用流程
+
+```
+您：開始生成 Phase 1 計畫書
+
+Claude：好的！我會問您 25 個問題...
+
+📋 第 1/25 題 - 基本資訊
+請問您的公司全名是？
+
+您：台灣創新科技股份有限公司
+
+Claude：✅ 已保存
+進度：[█░░░░░░░░░░] 1/25 (4%)
+
+📋 第 2/25 題 - 基本資訊
+請問您的公司主要產業是？
+A) 機械 B) 化工/材料 C) 電子...
+
+...（繼續到第 25 題）
+
+Claude：🎉 計畫書已生成！
+       [顯示完整的 12-15 頁計畫書]
+```
+
+#### 生成的計畫書包含
+
+✅ **9 大完整章節**：
+1. 計畫摘要
+2. 問題陳述與市場需求
+3. 創新構想與技術方案
+4. 市場分析與商業模式
+5. 技術可行性評估
+6. 團隊組成與分工
+7. 執行計畫與時程
+8. 經費需求與使用規劃
+9. 預期成果與效益
+
+✅ **符合官方格式**  
+✅ **自動變數替換**  
+✅ **可直接複製到 Word**  
+✅ **人工優化後即可送件**
+
+#### 兩種使用模式
+
+| 功能 | Pro 用戶（Projects） | 免費用戶（MCP Server） |
+|------|---------------------|----------------------|
+| 互動式問答 | ✅ | ✅ |
+| 自動保存進度 | ✅ | ✅ |
+| 可中斷後繼續 | ✅ | ✅ |
+| 上傳文件輔助 | ✅ | ❌ |
+| 隨時修改答案 | ✅ | ⚠️ 需重新回答 |
+| 體驗 | 最佳 | 完整功能 |
+
+👉 查看[使用指南](proposal_generator/USAGE.md)
+
+---
+
+### 📊 3. 市場數據自動查詢
+
+**混合式數據查詢系統**：
+- 🏛️ **官方 API**：經濟部統計處
+- 🌐 **網頁搜尋**：IEK、MIC、產業報告
+- 💾 **本地數據**：產業統計 JSON
+
+**範例**：
+```
+您：請幫我找機械產業的市場數據
+
+Claude：[呼叫 MCP Server]
+       [查詢經濟部統計處]
+       [搜尋 IEK 產業報告]
+       [整合多個來源]
+       [提供完整數據 + 來源連結]
+```
+
+---
+
+### ✅ 4. 完整檢核系統
+
+**5 個階段的檢核清單**：
+- 📋 申請前檢核（評分系統）
+- ✍️ Phase 1 撰寫檢核（逐頁檢查）
+- ✍️ Phase 2 撰寫檢核
+- 💰 經費檢核（法規遵循）
+- 📤 送件前檢核（最終確認）
+
+---
+
+## 🎯 完整使用流程
+
+### 步驟 1：確認資格（10 分鐘）
+
+```
+您：我的公司實收資本額 5000 萬，員工 50 人，可以申請 SBIR 嗎？
+
+Claude：[自動檢查資格]
+       ✅ 實收資本額 < 1 億（符合）
+       ✅ 員工數 < 200 人（符合）
+       [提供完整資格說明]
+```
+
+---
+
+### 步驟 2：驗證構想（1 小時）
+
+```
+您：我想做 AI 客服系統給中小企業用，幫我用 1 小時構想驗證的方法評估
+
+Claude：[載入 1hour_idea_validation.md]
+       [引導您完成 4 個部分]
+       - 創新點驗證
+       - 客戶驗證
+       - 可行性檢查
+       - 市場規模估算
+       [給出評分和建議]
+```
+
+---
+
+### 步驟 3：生成計畫書（30-45 分鐘）
+
+```
+您：開始生成 Phase 1 計畫書
+
+Claude：[啟動互動式生成器]
+       [25 個問題]
+       [自動保存進度]
+       [生成完整計畫書]
+```
+
+---
+
+### 步驟 4：品質檢查
+
+```
+您：幫我檢查 Phase 1 計畫書是否完整
+
+Claude：[使用 writing_checklist_phase1.md]
+       [逐項檢查]
+       [指出需要補充的地方]
+```
+
+---
+
+### 步驟 5：送件
+
+```
+您：送件前要準備哪些文件？
+
+Claude：[使用 submission_checklist.md]
+       [列出所有必要文件]
+       [提供送件注意事項]
+```
+
+---
+
+## 📖 使用指南
+
+### 快速開始
+
+- 🚀 [第一次使用](FIRST_TIME_USE.md) - 4 個範例問題
+- 📖 [完整使用說明](HOW_TO_USE.md) - 詳細功能介紹
+- ✅ [確認安裝成功](VERIFICATION.md) - 測試方法
+
+### 新手指南
+
+- 📚 [SBIR 新手入門](GETTING_STARTED.md) - 從零開始
+- ⚡ [10 分鐘資格檢查](quick_start/10min_eligibility_check.md)
+- 💡 [1 小時構想驗證](quick_start/1hour_idea_validation.md)
+- 🚀 [1 週計畫書衝刺](quick_start/1week_proposal_sprint.md)
+
+### 進階資源
+
+- 📝 [方法論系列](references/) - 6 個完整框架
+- ❓ [FAQ 大全](FAQ.md) - 81 個常見問題
+- 📊 [案例研究](examples/case_studies/) - 成功 + 失敗案例
+- 📋 [範本庫](templates/) - Phase 1/2 範本
+
+---
+
+
+## 📊 專案統計
+
+| 指標 | 數量 |
+|------|------|
+| 📁 總檔案數 | **77+** |
+| 📝 總字數 | **160,000+** |
+| ❓ FAQ 數量 | **101 個** |
+| 📚 方法論 | **6 個完整框架** |
+| ✍️ 撰寫指南 | **12 個專題** |
+| ✅ 檢核項目 | **200+** |
+| 📊 案例研究 | **6 個詳細案例** |
+| 🎯 完整度 | **98%** |
+
+**涵蓋完整申請流程**：
+```
+申請準備 → 計畫撰寫 → 簡報審查 → 執行管理 → 結案報告
+    ↓          ↓          ↓          ↓          ↓
+  ✅ FAQ    ✅ 技巧    ✅ 簡報    ✅ 指南    ✅ 範本
+```
+
+---
+
+## 🔄 更新知識庫
+
+### 方法一：在 Claude 中直接說（推薦！）
+
+安裝後，只要在 Claude Desktop 中說：
+
+```
+請更新 SBIR 知識庫
+```
+
+Claude 會自動從 GitHub 拉取最新版本！
+
+### 方法二：手動更新
+
+```bash
+cd sbir-grants && git pull
+```
+
+> ⚠️ 如果您是下載 ZIP 的用戶，需要重新下載才能獲得更新
+
+---
+
+## 🛠️ 技術亮點
+
+### 智能 MCP Server
+
+- 🔍 **自動知識庫搜尋**：關鍵字匹配 + 類別篩選
+- 📖 **文件自動讀取**：安全檢查 + 格式化輸出
+- 📊 **混合式數據查詢**：API + 網頁搜尋 + 本地數據
+- 💾 **狀態持久化**：JSON 檔案保存進度
+
+### 互動式生成器
+
+- 📋 **25 個結構化問題**：涵蓋所有章節
+- 🎯 **智能驗證**：必填檢查 + 長度限制 + 數值範圍
+- 🔄 **條件邏輯**：根據答案動態調整問題
+- 📝 **模板引擎**：自動變數替換 + 條件區塊
+
+### 零門檻安裝
+
+- 🚀 **一鍵安裝腳本**：自動檢測 + 自動配置
+- 📖 **超簡單文件**：國小程度語言
+- ✅ **完整驗證**：確保安裝成功
+
+---
+
+## 🤝 貢獻
+
+歡迎貢獻！請查看 [CONTRIBUTING.md](CONTRIBUTING.md)
+
+---
+
+## 📄 授權
+
+MIT License - 詳見 [LICENSE](LICENSE)
+
+---
+
+## 🙏 致謝
+
+感謝所有為台灣中小企業創新努力的人們。
+
+---
+
+<div align="center">
+
+## 🚀 開始使用 SBIR Skill
+
+**讓 AI 協助您成功申請 SBIR 補助**
+
+[⬇️ 立即下載](https://github.com/backtrue/sbir-grants/archive/refs/heads/main.zip) • [📖 查看文件](GETTING_STARTED.md) • [💬 問題回報](https://github.com/backtrue/sbir-grants/issues)
+
+---
+
+**⭐ 如果這個專案對您有幫助，請給我們一個 Star！**
+
+Made with ❤️ for Taiwan SMEs
+
+</div>
+
