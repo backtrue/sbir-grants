@@ -1,5 +1,5 @@
 import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 import { AuthProvider } from './contexts/AuthContext';
@@ -15,6 +15,11 @@ function RouteFallback() {
   return <div className="min-h-screen bg-slate-50" />;
 }
 
+function LegacyProjectRedirect() {
+  const { id } = useParams<{ id: string }>();
+  return <Navigate to={id ? `/app/projects/${id}` : '/app/projects'} replace />;
+}
+
 function App() {
   return (
     <AuthProvider>
@@ -22,6 +27,9 @@ function App() {
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route path="/login" element={<Login />} />
+            <Route path="/projects" element={<Navigate to="/app/projects" replace />} />
+            <Route path="/projects/:id" element={<LegacyProjectRedirect />} />
+            <Route path="/settings" element={<Navigate to="/app/settings" replace />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/app" element={<Layout />}>
                 <Route index element={<Home />} />

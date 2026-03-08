@@ -444,7 +444,7 @@ export default function ProjectDetails() {
             <div className="text-center p-24">
                 <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
                 <h2 className="text-xl font-bold text-slate-800">找不到專案</h2>
-                <Link to="/projects" className="text-primary-600 hover:underline mt-4 inline-block">
+                <Link to="/app/projects" className="text-primary-600 hover:underline mt-4 inline-block">
                     返回專案列表
                 </Link>
             </div>
@@ -456,7 +456,7 @@ export default function ProjectDetails() {
             {/* Header section */}
             <div className="flex items-center gap-4">
                 <Link
-                    to="/projects"
+                    to="/app/projects"
                     className="p-2 -ml-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
                 >
                     <ChevronLeft className="w-6 h-6" />

@@ -95,7 +95,7 @@ export default function Projects() {
                         {projects.map((project) => (
                             <Link
                                 key={project.id}
-                                to={`/projects/${project.id}`}
+                                to={`/app/projects/${project.id}`}
                                 className="group flex flex-col sm:flex-row sm:items-center justify-between p-6 hover:bg-slate-50 transition-colors"
                             >
                                 <div className="flex items-start gap-4 mb-4 sm:mb-0">

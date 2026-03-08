@@ -44,7 +44,7 @@ export default function OutOfCreditsModal() {
                         <button
                             onClick={() => {
                                 setIsOpen(false);
-                                navigate('/settings');
+                                navigate('/app/settings');
                             }}
                             className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 px-4 rounded-xl font-medium transition-colors shadow-sm focus:ring-4 focus:ring-indigo-100"
                         >

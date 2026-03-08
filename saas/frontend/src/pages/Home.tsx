@@ -39,7 +39,7 @@ export default function Home() {
             });
             setIsCreateModalOpen(false);
             // Navigate directly to the newly created project details page
-            navigate(`/projects/${data.id}`);
+            navigate(`/app/projects/${data.id}`);
         } catch (e) {
             console.error('Failed to create project', e);
         }
@@ -86,7 +86,7 @@ export default function Home() {
             <div className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
                 <div className="px-6 py-5 border-b border-slate-200 bg-slate-50/50 flex justify-between items-center">
                     <h2 className="font-semibold text-slate-900">最近的專案</h2>
-                    <Link to="/projects" className="text-sm text-primary-600 hover:text-primary-700 font-medium">查看全部 →</Link>
+                    <Link to="/app/projects" className="text-sm text-primary-600 hover:text-primary-700 font-medium">查看全部 →</Link>
                 </div>
                 {loading ? (
                     <div className="p-12 text-center text-slate-500">載入儀表板中...</div>
@@ -102,7 +102,7 @@ export default function Home() {
                 ) : (
                     <div className="divide-y divide-slate-200">
                         {projects.slice(0, 5).map((p) => (
-                            <Link key={p.id} to={`/projects/${p.id}`} className="block px-6 py-4 hover:bg-slate-50 transition-colors flex justify-between items-center group">
+                            <Link key={p.id} to={`/app/projects/${p.id}`} className="block px-6 py-4 hover:bg-slate-50 transition-colors flex justify-between items-center group">
                                 <div>
                                     <p className="font-medium text-slate-900 group-hover:text-primary-600 transition-colors">{p.title}</p>
                                     <p className="text-sm text-slate-500">{p.county || '未指定縣市'}</p>
